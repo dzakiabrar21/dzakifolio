@@ -60,7 +60,7 @@ export const experiences: Experience[] = [
     color: "#A855F7",
     images: [
       "/images/experience/temualumni-1.png",
-      "/images/experience/temualumni-2.jpg",
+      "/images/experience/temualumni-2.JPG",
       "/images/experience/temualumni-3.jpeg",
     ]
   },
@@ -75,7 +75,7 @@ export const experiences: Experience[] = [
     ],
     color: "#EF4444",
     images: [
-      "/images/experience/workshop-1.jpg",
+      "/images/experience/workshop-1.JPG",
       "/images/experience/workshop-2.png",
     ]
   },
@@ -122,7 +122,7 @@ export const experiences: Experience[] = [
     ],
     color: "#EC4899",
     images: [
-      "/images/experience/fr-1.jpg",
+      "/images/experience/fr-1.JPG",
       "/images/experience/fr-2.png",
     ]
   },
