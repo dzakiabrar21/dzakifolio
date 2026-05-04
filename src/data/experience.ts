@@ -186,7 +186,7 @@ export const experiences: Experience[] = [
     ],
     color: "#EC4899",
     images: [
-      "/images/experience/fr-1.JPG",
+      "/images/experience/fr-1.jpg",
       "/images/experience/fr-2.png",
     ]
   },
@@ -232,7 +232,7 @@ export const experiences: Experience[] = [
     ],
     color: "#F59E0B",
     images: [
-      "/images/experience/printernal-1.jpg",
+      "/images/experience/printernal-1.JPG",
       "/images/experience/printernal-2.jpeg",
     ]
   },
