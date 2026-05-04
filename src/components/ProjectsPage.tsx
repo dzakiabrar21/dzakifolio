@@ -2,9 +2,9 @@
 
 import { useState, useEffect, useCallback } from "react";
 import { projects } from "@/data/projects";
-import { X, ChevronLeft, ChevronRight } from "lucide-react";
+import { X, ChevronLeft, ChevronRight, ExternalLink, ArrowRight } from "lucide-react";
 
-export default function Projects() {
+export default function ProjectsPage() {
   const [selectedProject, setSelectedProject] = useState<number | null>(null);
   const [currentSlide, setCurrentSlide] = useState(0);
 
@@ -42,57 +42,69 @@ export default function Projects() {
   }, [selectedProject, currentSlide, nextSlide]);
 
   return (
-    <section id="projects" className="py-16 md:py-24 space-y-8 md:space-y-12">
-      {/* Judul Seksi */}
-      <h2 className="text-white text-3xl md:text-[40px] font-bold leading-tight font-Inter tracking-tight">
-        Projects
-      </h2>
+    <section id="projects" className="w-full pt-32 pb-20 flex flex-col items-center min-h-screen">
+      <div className="w-full max-w-[1200px] px-0 flex flex-col items-center">
+        {/* Section Title */}
+        <h2 className="text-white text-[26px] md:text-[32px] font-bold leading-tight font-Inter tracking-tight mb-10 text-center">
+          Project – Muhammad Dzaki Abrar
+        </h2>
 
-      {/* Container Slider */}
-      <div className="flex flex-row gap-6 overflow-x-auto pb-10 snap-x snap-mandatory scrollbar-hide">
-        {projects.map((project, index) => (
-          <div
-            key={project.title}
-            onClick={() => openModal(index)}
-            className="min-w-[320px] md:min-w-[450px] lg:min-w-[500px] snap-center bg-[#18181B] rounded-[20px] overflow-hidden border border-white/10 flex flex-col transition-all duration-500 hover:border-emerald-500/30 group cursor-pointer"
-          >
-            {/* Project Image Section */}
-            <div className="relative w-full bg-zinc-900 overflow-hidden" style={{ aspectRatio: '1440/1024' }}>
-              <img
-                src={project.images[0]}
-                alt={project.title}
-                className="w-full h-full object-contain transition-all duration-700"
-              />
+        {/* Projects List — 2 column grid */}
+        <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12">
+          {projects.map((project, index) => (
+            <div
+              key={project.title}
+              className="w-full flex flex-col gap-4 animate-fadeIn"
+            >
+              {/* Hero Image */}
+              <div
+                className="w-full rounded-2xl overflow-hidden border border-white/10 bg-[#0D0D0D] cursor-pointer relative group"
+                onClick={() => openModal(index)}
+                style={{ aspectRatio: '16/9' }}
+              >
+                <img
+                  src={project.images[0]}
+                  alt={project.title}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
 
-            </div>
+              </div>
 
-            {/* Content Section */}
-            <div className="p-6 md:p-8 space-y-5">
-              <div className="space-y-2">
-                <h3 className="text-white text-[24px] font-bold leading-tight font-Inter uppercase">
+              {/* Content Below Image — Stacked layout for 2-column grid */}
+              <div className="w-full flex flex-col gap-2 px-1">
+                <h3 className="text-white text-[18px] md:text-[20px] font-bold leading-tight font-Inter">
                   {project.title}
                 </h3>
-                <p className="text-white/60 text-[16px] font-normal leading-relaxed font-Inter line-clamp-2">
+                <p className="text-white/60 text-[13px] md:text-[14px] font-normal leading-relaxed font-Inter line-clamp-2">
                   {project.popupDesc}
                 </p>
-              </div>
 
-              {/* Tags Section */}
-              <div className="flex flex-wrap gap-2 pt-2">
-                {project.tags.map((tag) => (
-                  <div
-                    key={tag}
-                    className="bg-white/5 rounded-full px-3 py-1 border border-white/5"
+                {/* Actions */}
+                <div className="flex items-center gap-6 pt-2">
+                  <button
+                    onClick={() => openModal(index)}
+                    className="inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-300 text-[13px] font-medium font-Inter transition-colors cursor-pointer"
                   >
-                    <span className="text-white/40 text-[12px] font-medium font-JetBrainsMono uppercase tracking-wider">
-                      {tag}
-                    </span>
-                  </div>
-                ))}
+                    Read case study
+                    <ArrowRight size={14} />
+                  </button>
+
+                  {(project as any).link && (
+                    <a
+                      href={(project as any).link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 text-white/50 hover:text-white text-[13px] font-medium font-Inter transition-colors"
+                    >
+                      View project
+                      <ExternalLink size={13} />
+                    </a>
+                  )}
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
 
       {/* ===== POPUP MODAL ===== */}

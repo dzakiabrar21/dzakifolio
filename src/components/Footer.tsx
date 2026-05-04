@@ -19,18 +19,18 @@ export default function Footer() {
     <footer className="pt-12 pb-12 border-t border-white/10 mt-8">
       <div className="max-w-[1428px] mx-auto px-6 md:px-[122px] space-y-16">
         {/* Top Footer: Links Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-10 md:gap-12">
           {/* Brand Column */}
-          <div className="space-y-6">
+          <div className="col-span-2 md:col-span-1 space-y-4 md:space-y-6">
             <p className="text-white/60 text-sm leading-relaxed">
               Engineering Intelligence.<br />Crafting Modern Web.
             </p>
           </div>
 
           {/* Navigation */}
-          <div className="space-y-6">
+          <div className="space-y-4 md:space-y-6">
             <h4 className="text-sm font-semibold text-white">Navigation</h4>
-            <div className="flex flex-col gap-3 text-sm text-white/60">
+            <div className="flex flex-col gap-2 md:gap-3 text-sm text-white/60">
               <a href="#hero" onClick={(e) => handleScroll(e, 'hero')} className="hover:text-white transition-colors">Home</a>
               <a href="#hero" onClick={(e) => handleScroll(e, 'hero')} className="hover:text-white transition-colors">About Me</a>
               <a href="#experience" onClick={(e) => handleScroll(e, 'experience')} className="hover:text-white transition-colors">Experience</a>
@@ -39,9 +39,9 @@ export default function Footer() {
           </div>
 
           {/* Projects */}
-          <div className="space-y-6">
+          <div className="space-y-4 md:space-y-6">
             <h4 className="text-sm font-semibold text-white">Projects</h4>
-            <div className="flex flex-col gap-3 text-sm text-white/60">
+            <div className="flex flex-col gap-2 md:gap-3 text-sm text-white/60">
               <a href="#projects" onClick={(e) => handleScroll(e, 'projects')} className="hover:text-white transition-colors">All Work</a>
               <a href="#projects" onClick={(e) => handleScroll(e, 'projects')} className="hover:text-white transition-colors">Featured</a>
               <a href="#certificates" onClick={(e) => handleScroll(e, 'certificates')} className="hover:text-white transition-colors">Certificates</a>
@@ -49,9 +49,9 @@ export default function Footer() {
           </div>
 
           {/* Connect */}
-          <div className="space-y-6">
+          <div className="space-y-4 md:space-y-6">
             <h4 className="text-sm font-semibold text-white">Connect</h4>
-            <div className="flex flex-col gap-3 text-sm text-white/60">
+            <div className="flex flex-col gap-2 md:gap-3 text-sm text-white/60">
               <a href="https://github.com/dzakiabrar21" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">GitHub</a>
               <a href="https://www.linkedin.com/in/muhammad-dzaki-abrar" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">LinkedIn</a>
               <a href="https://www.instagram.com/dzaki.abrarr" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Instagram</a>

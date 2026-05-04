@@ -1,119 +1,132 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { experiences } from "@/data/experience";
+import { ChevronDown } from "lucide-react";
 
 export default function Experience() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const [hasSnapped, setHasSnapped] = useState(false);
+  const [openKeys, setOpenKeys] = useState<Record<string, boolean>>({});
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const [entry] = entries;
-        
-        // Trigger snap if the element comes into view (between 20% and 80% visible)
-        // AND we haven't already snapped it.
-        if (
-          !hasSnapped && 
-          entry.isIntersecting && 
-          entry.intersectionRatio > 0.2 && 
-          entry.intersectionRatio < 0.8
-        ) {
-          entry.target.scrollIntoView({ behavior: "smooth", block: "start" });
-          setHasSnapped(true); // Lock it so it doesn't loop
-          
-          // Reset the snap lock after 5 seconds
-          setTimeout(() => {
-            setHasSnapped(false);
-          }, 5000);
-        }
-      },
-      {
-        threshold: [0.2, 0.8], 
-        rootMargin: "0px",
-      }
-    );
+  const toggleAccordion = (key: string) => {
+    setOpenKeys((prev) => ({
+      ...prev,
+      [key]: !prev[key]
+    }));
+  };
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
+  // Group experiences by category
+  const professional = experiences.filter(e => e.category === "professional");
+  const leadership = experiences.filter(e => e.category === "leadership");
+  const coordination = experiences.filter(e => e.category === "coordination");
 
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
-  }, [hasSnapped]);
+  const sections = [
+    { title: "Organization & Work Experience", sectionId: "experience", items: [...professional, ...leadership] },
+    { title: "Committee", sectionId: "committee", items: coordination },
+  ];
 
   return (
-    <section ref={sectionRef} id="experience" className="w-full h-auto lg:h-[716px] bg-black flex flex-col lg:flex-row border-t border-white/10 overflow-hidden">
-      {/* LEFT: Title (Static/Sticky) */}
-      <div className="w-full lg:w-[432px] h-auto border-b lg:border-b-0 lg:border-r border-white/10 flex flex-col justify-center items-center py-12 lg:py-0 px-6 lg:px-12 sticky top-0 bg-black z-10 lg:min-h-[716px]">
-        <div className="w-full max-w-[338px] space-y-4 text-center lg:text-left">
-          <h2 className="text-white text-4xl lg:text-[60px] font-bold leading-tight lg:leading-[60px] font-Inter tracking-tight">
-            Experience
-          </h2>
-          <p className="text-[#99A1AF] text-base lg:text-[18px] font-normal leading-relaxed lg:leading-[28px] font-Inter">
-            My professional journey and achievements.
-          </p>
-        </div>
-      </div>
+    <section className="w-full py-8 md:py-12">
+      <div className="flex flex-col gap-12">
+        {sections.map((section) => (
+          <div key={section.title} id={section.sectionId} className="flex flex-col gap-0 scroll-mt-8">
+            {/* Section Title */}
+            <h2 className="text-white text-[26px] md:text-[32px] font-bold leading-tight font-Inter tracking-tight mb-6">
+              {section.title}
+            </h2>
 
-      {/* RIGHT: Content (Scrollable) */}
-      <div className="flex-1 h-auto lg:h-[716px] overflow-visible lg:overflow-y-auto scrollbar-hide pt-10 lg:pt-16 pb-20 lg:pb-32 px-6 sm:px-12 md:px-16">
-        <div className="max-w-[852px] flex flex-col gap-10 relative">
-          
-          {experiences.map((exp, index) => (
-            <div key={index} className="flex flex-col gap-12 mb-16">
-              {/* Content Container Base */}
-              <div className="flex flex-col relative pb-4">
-                {/* Experience Header */}
-                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2 gap-2 sm:gap-0">
-                  <h3 className="text-white text-[28px] md:text-[32px] font-bold leading-[40px] font-Inter tracking-tight">
-                    {exp.company}
-                  </h3>
-                  <span className="text-[#99A1AF] text-[18px] font-normal leading-[28px] font-Inter sm:pt-2 whitespace-nowrap">
-                    {exp.period}
-                  </span>
-                </div>
-                
-                {/* Role Info */}
-                <p className="text-[#06B6D4] text-[18px] font-medium leading-[28px] font-Inter mb-8">
-                  {exp.role}
-                </p>
+            {/* Accordion Items */}
+            <div className="flex flex-col border-t border-white/[0.08]">
+              {section.items.map((exp, idx) => {
+                const key = `${exp.company}-${exp.role}-${idx}`;
+                const isOpen = !!openKeys[key];
 
-                {/* Work Points (Truncated to max 2) */}
-                <ul className="space-y-4 mb-10 pl-2">
-                  {exp.points.slice(0, 2).map((point, i) => (
-                    <li key={i} className="flex items-start gap-4 text-white/90 text-[16px] md:text-[18px] font-normal leading-[28px] font-Inter">
-                      <span className="text-white/90 pt-[10px] flex-shrink-0 text-[8px]">●</span>
-                      <span className="max-w-[700px]">{point}</span>
-                    </li>
-                  ))}
-                </ul>
+                return (
+                  <div 
+                    key={key} 
+                    className={`border-b border-white/[0.08] transition-colors ${
+                      isOpen ? 'bg-white/[0.02]' : ''
+                    }`}
+                  >
+                    {/* Accordion Header */}
+                    <button
+                      onClick={() => toggleAccordion(key)}
+                      className="w-full flex items-center justify-between py-5 px-2 md:px-4 cursor-pointer group"
+                    >
+                      <div className="flex items-center gap-4 md:gap-5 text-left">
+                        {/* Organization Logo */}
+                        {exp.logo && (
+                          <div className="w-12 h-12 md:w-14 md:h-14 flex-shrink-0 rounded-full overflow-hidden bg-[#1A1A1A] border border-white/[0.08] flex items-center justify-center">
+                            <img 
+                              src={exp.logo} 
+                              alt={`${exp.company} logo`}
+                              className="w-full h-full object-cover"
+                              onError={(e) => {
+                                const target = e.target as HTMLImageElement;
+                                target.src = `https://via.placeholder.com/150/1A1A1A/FFFFFF?text=${encodeURIComponent(exp.company.charAt(0))}`;
+                              }}
+                            />
+                          </div>
+                        )}
 
-                {/* Thumbnail Images */}
-                {exp.images && exp.images.length > 0 && (
-                  <div className="flex flex-row gap-4 flex-wrap pt-2">
-                    {exp.images.map((img, i) => (
-                      <div
-                        key={i}
-                        className="w-[280px] h-[158px] rounded-xl overflow-hidden border border-white/5 group-hover:border-white/20 transition-all flex-shrink-0 shadow-lg"
-                      >
-                        <img
-                          src={img}
-                          alt={`${exp.company} - ${i + 1}`}
-                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                        />
+                        {/* Experience Details */}
+                        <div className="flex flex-col items-start gap-1">
+                          <h3 className="text-white text-[16px] md:text-[18px] font-bold leading-tight font-Inter">
+                            {exp.company}
+                          </h3>
+                          <p className="text-white/80 text-[13px] md:text-[14px] font-normal font-Inter">
+                            {exp.role} • {exp.period}
+                          </p>
+                        </div>
                       </div>
-                    ))}
+
+                      <ChevronDown 
+                        size={20} 
+                        className={`text-white/40 flex-shrink-0 transition-transform duration-300 ${
+                          isOpen ? 'rotate-180' : ''
+                        }`}
+                      />
+                    </button>
+
+                    {/* Accordion Content */}
+                    <div className={`overflow-hidden transition-all duration-400 ease-in-out ${
+                      isOpen ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'
+                    }`}>
+                      <div className="px-2 md:px-4 pb-6 pt-1 flex flex-col gap-5">
+                        {/* Work Points */}
+                        <ul className="space-y-3 pl-1">
+                          {exp.points.map((point, i) => (
+                            <li key={i} className="flex items-start gap-3 text-white text-[13px] md:text-[14px] font-normal leading-relaxed font-Inter">
+                              <span className="text-white/60 pt-[6px] flex-shrink-0 text-[6px]">●</span>
+                              <span>{point}</span>
+                            </li>
+                          ))}
+                        </ul>
+
+                        {/* Thumbnail Images */}
+                        {exp.images && exp.images.length > 0 && (
+                          <div className="grid grid-cols-2 gap-3 md:gap-4 pt-2">
+                            {exp.images.map((img, i) => (
+                              <div
+                                key={i}
+                                className="w-full aspect-video rounded-xl overflow-hidden border border-white/[0.06]"
+                              >
+                                <img
+                                  src={img}
+                                  alt={`${exp.company} - ${i + 1}`}
+                                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                                />
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    </div>
                   </div>
-                )}
-              </div>
+                );
+              })}
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
     </section>
   );

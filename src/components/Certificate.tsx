@@ -1,33 +1,103 @@
 "use client";
 
 import { useState } from "react";
-import { X } from "lucide-react";
+import { X, ArrowRight } from "lucide-react";
 
 const certificates = [
   {
-    title: "Project Manager — Temu Alumni",
-    issuer: "PUMA Informatics",
-    date: "Des 2024 – Jan 2025",
+    title: "Learning AI Basics",
+    issuer: "Dicoding Indonesia",
+    date: "Apr 2026 – Apr 2029",
+    image: "/images/certificates/dicoding-dasar-ai.jpg",
+    link: "https://www.dicoding.com/certificates/L4PQ9122OPO1"
+  },
+  {
+    title: "Starting Programming with Python",
+    issuer: "Dicoding Indonesia",
+    date: "Apr 2026 – Apr 2029",
+    image: "/images/certificates/dicoding-python.jpg",
+    link: "https://www.dicoding.com/certificates/EYX4QJDK6PDL"
+  },
+  {
+    title: "Learning Data Science Application with Microsoft Fabric",
+    issuer: "Dicoding Indonesia",
+    date: "Apr 2026 – Apr 2029",
+    image: "/images/certificates/dicoding-data-science.jpg",
+    link: "https://www.dicoding.com/certificates/KEXLQ7000PG2"
+  },
+  {
+    title: "Learning Machine Learning for Beginners",
+    issuer: "Dicoding Indonesia",
+    date: "Apr 2026 – Apr 2029",
+    image: "/images/certificates/dicoding-machine-learning.jpg",
+    link: "https://www.dicoding.com/certificates/98XW0E549XM3"
+  },
+  {
+    title: "Building Gen AI Applications with Microsoft Azure",
+    issuer: "Dicoding Indonesia",
+    date: "Apr 2026 – Apr 2029",
+    image: "/images/certificates/dicoding-gen-ai-azure.jpg",
+    link: "https://www.dicoding.com/certificates/JMZVOE39RXN9"
+  },
+  {
+    title: "Prompt Engineering for Software Developers",
+    issuer: "Dicoding Indonesia",
+    date: "Apr 2026 – Apr 2029",
+    image: "/images/certificates/dicoding-prompt-engineering.jpg",
+    link: "https://www.dicoding.com/certificates/1OP8R4JKVZQK"
+  },
+  {
+    title: "Retrieval-Augmented Generation for Enhanced AI Outputs",
+    issuer: "IBM",
+    date: "May 2026",
+    image: "/images/certificates/ibm-rag.jpg",
+    link: "https://www.credly.com/badges/8eba4149-ca37-40a7-85e3-5de589989dbe/linked_in_profile"
+  },
+  {
+    title: "Generative AI Essentials: Using LLMs to Work with Data",
+    issuer: "IBM",
+    date: "May 2026",
+    image: "/images/certificates/ibm-gen-ai-essentials.jpg",
+    link: "https://www.credly.com/badges/560894de-1492-4cd2-9180-aaaca0231da9/linked_in_profile"
+  },
+  {
+    title: "Data Fundamentals",
+    issuer: "IBM",
+    date: "May 2026",
+    image: "/images/certificates/ibm-data-fundamentals.jpg",
+    link: "https://www.credly.com/badges/34e6b954-0fb1-4de3-a9ba-1689e08ab757/linked_in_profile"
+  },
+  {
+    title: "Artificial Intelligence Fundamentals",
+    issuer: "IBM",
+    date: "Apr 2026",
+    image: "/images/certificates/ibm-ai-fundamentals.jpg",
+    link: "https://www.credly.com/badges/0292115d-ce29-42be-bcf5-2afed2f10ea2/linked_in_profile"
+  },
+  {
+    title: "Alumni Gathering",
+    issuer: "Project Manager • PUMA Informatics",
+    date: "Dec 2024 – Jan 2025",
     image: "/images/certificates/temualumni-1.png",
     link: "#"
   },
   {
-    title: "Supervisor — Workshop Alumni",
-    issuer: "PUMA Informatics",
+    title: "Alumni Workshop",
+    issuer: "Supervisor • PUMA Informatics",
     date: "2024",
     image: "/images/certificates/workshop-2.png",
     link: "#"
   },
   {
-    title: "Fundraising and FnB (FR) — Company Visit",
-    issuer: "PUMA Informatics",
+    title: "Company Visit",
+    issuer: "Fundraising & FnB • PUMA Informatics",
     date: "2024",
     image: "/images/certificates/fr-2.png",
     link: "#"
   },
   {
-    title: "Exhibition — Comsphere PUFA Computer Science",
-    issuer: "President University",
+    title: "Comsphere PUFA Computer Science",
+    issuer: "Exhibition • President University",
     date: "2025",
     image: "/images/certificates/compshere-3.png",
     link: "#"
@@ -40,29 +110,29 @@ const certificates = [
     link: "#"
   },
   {
-    title: "Sertifikat Hafalan 30 Juz",
-    issuer: "Yayasan Pendidikan Ulumul Qur'an (YPUQ)",
+    title: "30 Juz Quran Memorization Certificate",
+    issuer: "Ulumul Qur'an Education Foundation (YPUQ)",
     date: "2023",
     image: "/images/certificates/hafalan.jpg",
     link: "#"
   },
   {
-    title: "Sertifikat OSDIQ (Organisasi Santri Dayah Insan Qurani)",
+    title: "OSDIQ Certificate (Insan Qurani Dayah Student Organization)",
     issuer: "Dayah Insan Qurani",
     date: "2022",
     image: "/images/certificates/osdiq.jpg",
     link: "#"
   },
   {
-    title: "Sertifikat UKBI (Uji Kemahiran Berbahasa Indonesia)",
-    issuer: "Badan Bahasa Kemendikbudristek",
+    title: "UKBI Certificate (Indonesian Language Proficiency Test)",
+    issuer: "Ministry of Education and Culture (Kemendikbudristek)",
     date: "2025",
     image: "/images/certificates/ukbi.jpg",
     link: "#"
   },
   {
-    title: "Webinar Vespa 2.0",
-    issuer: "Komunitas Beasiswa Unggulan Surabaya",
+    title: "Vespa 2.0 Webinar",
+    issuer: "Surabaya Excellence Scholarship Community",
     date: "2024",
     image: "/images/certificates/vespa.png",
     link: "#"
@@ -71,9 +141,6 @@ const certificates = [
 
 export default function Certificate() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
-  const [showAll, setShowAll] = useState(false); // State for toggling "Show More"
-
-  const displayedCertificates = showAll ? certificates : certificates.slice(0, 3); // Display logic
 
   const openModal = (imageSrc: string) => {
     setSelectedImage(imageSrc);
@@ -84,16 +151,16 @@ export default function Certificate() {
   };
 
   return (
-    <section id="certificates" className="w-full py-20 bg-black flex flex-col items-center border-t border-white/10">
+    <section id="certificates" className="w-full pt-32 pb-20 bg-black flex flex-col items-center min-h-screen">
       <div className="w-full max-w-[1200px] px-6 md:px-12 flex flex-col items-center">
         {/* Section Title */}
         <h2 className="text-white text-[32px] md:text-[40px] font-bold leading-tight font-Inter tracking-tight mb-12 text-center">
-          Certifications
+          Licenses & certifications
         </h2>
 
         {/* Certificates Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-10 w-full transition-all duration-500">
-          {displayedCertificates.map((cert, index) => (
+          {certificates.map((cert, index) => (
             <div 
               key={index} 
               className="flex flex-col group cursor-pointer animate-fadeIn"
@@ -119,33 +186,25 @@ export default function Certificate() {
                   {cert.title}
                 </h3>
                 
-                <p className="text-[#99A1AF] text-[15px] font-normal leading-[24px] font-Inter">
+                <p className="text-[#99A1AF] text-[15px] font-normal leading-[24px] font-Inter mb-3">
                   {cert.issuer} • {cert.date}
                 </p>
+
+                {cert.link && cert.link !== "#" && (
+                  <a
+                    href={cert.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[#00E5FF] hover:text-[#00b3cc] text-[14px] font-medium leading-[24px] font-Inter flex items-center transition-colors w-fit mt-auto"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    View Credential <ArrowRight size={16} className="ml-1.5" />
+                  </a>
+                )}
               </div>
             </div>
           ))}
         </div>
-
-        {/* Show More / Show Less Button */}
-        {certificates.length > 3 && (
-          <button
-            onClick={() => setShowAll(!showAll)}
-            className="mt-12 w-12 h-12 bg-white/5 border border-white/10 rounded-full flex items-center justify-center text-white/70 hover:text-white hover:bg-white/10 hover:border-white/20 transition-all group"
-            aria-label={showAll ? "Show less certificates" : "Show more certificates"}
-          >
-            <svg 
-              width="24" 
-              height="24" 
-              viewBox="0 0 24 24" 
-              fill="none" 
-              xmlns="http://www.w3.org/2000/svg"
-              className={`transition-transform duration-500 ease-in-out ${showAll ? 'rotate-180' : ''}`}
-            >
-              <path d="M6 9L12 15L18 9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </button>
-        )}
       </div>
 
       {/* ===== POPUP MODAL ===== */}

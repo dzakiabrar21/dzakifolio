@@ -1,5 +1,21 @@
 export const projects = [
   {
+    title: "Autonomous Shape Sorting System (Smart Factory)",
+    desc: "Prototipe otomasi industri yang mengintegrasikan Computer Vision (AI) dan IoT untuk mengklasifikasikan serta menyortir objek geometris secara otomatis di atas sabuk konveyor.",
+    tags: ["YOLOv11", "ESP32", "React", "FastAPI"],
+    accuracy: "Smart Factory",
+    category: "AI / Robotics",
+    popupDesc: "Prototipe otomasi industri yang mengintegrasikan Computer Vision (AI) dan IoT untuk mengklasifikasikan serta menyortir objek geometris secara otomatis di atas sabuk konveyor. Membandingkan YOLOv8 dan YOLOv11; memilih YOLOv11 karena 15% lebih sedikit parameter dan 25% lebih rendah GFLOPs. Mengembangkan logika non-blocking state-machine pada ESP32 untuk sinkronisasi presisi antara deteksi kamera dan gerakan pendorong mekanik, serta membangun dashboard interaktif untuk kontrol sensitivitas visi dan pemantauan statistik produksi.",
+    images: [
+      "/images/projects/robotics-1.png",
+      "/images/projects/robotics-2.jpeg",
+      "/images/projects/robotics-3.jpeg",
+      "/images/projects/robotics-4.png",
+      "/images/projects/robotics-5.png",
+      "/images/projects/robotics-6.jpeg",
+    ]
+  },
+  {
     title: "Real-time Trash Detection",
     desc: "An advanced object detection system using YOLOv11 architecture for real-time waste classification.",
     tags: ["YOLOv11", "PyTorch", "AI"],
