@@ -24,7 +24,7 @@ export default function ProfileSidebar() {
       {/* Circular Profile Photo */}
       <div className="relative w-[200px] h-[200px] md:w-[240px] md:h-[240px] rounded-full overflow-hidden flex-shrink-0 border-2 border-white/10 shadow-2xl">
         <img 
-          src="/images/image(4).jpg"
+          src="/images/image(4).JPG"
           alt="Muhammad Dzaki Abrar"
           className="w-full h-full object-cover"
         />
