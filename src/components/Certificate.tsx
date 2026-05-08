@@ -47,6 +47,13 @@ const certificates = [
     link: "https://www.dicoding.com/certificates/1OP8R4JKVZQK"
   },
   {
+    title: "Fundamental Deep Learning",
+    issuer: "Dicoding Indonesia",
+    date: "May 2026 – May 2029",
+    image: "/images/certificates/dicoding-deep-learning.jpg",
+    link: "https://www.dicoding.com/certificates/53XE1KO9VZRN"
+  },
+  {
     title: "Retrieval-Augmented Generation for Enhanced AI Outputs",
     issuer: "IBM",
     date: "May 2026",

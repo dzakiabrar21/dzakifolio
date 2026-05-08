@@ -83,7 +83,7 @@ export default function ProjectsPage() {
                 <div className="flex items-center gap-6 pt-2">
                   <button
                     onClick={() => openModal(index)}
-                    className="inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-300 text-[13px] font-medium font-Inter transition-colors cursor-pointer"
+                    className="inline-flex items-center gap-2 text-white hover:text-white/70 text-[13px] font-medium font-Inter transition-colors cursor-pointer"
                   >
                     Read case study
                     <ArrowRight size={14} />

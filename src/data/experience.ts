@@ -7,11 +7,12 @@ export interface Experience {
   category: "professional" | "leadership" | "coordination";
   images?: string[];
   logo?: string;
+  isDocument?: boolean;
 }
 
 export const experiences: Experience[] = [
   // ── Professional Experience ──
-  {
+   {
     company: "PT Bank Mandiri Tbk x Rakamin Academy",
     role: "Project-Based Intern — Mobile Application Developer",
     period: "May 2026 - Present",
@@ -25,6 +26,42 @@ export const experiences: Experience[] = [
     logo: "/images/experience/logo-mandiri.jpg",
     images: []
   },
+
+  {
+    company: "SYNTECXHUB",
+    role: "Artificial Intelligence Intern",
+    period: "May 2026 - Present",
+    category: "professional",
+    points: [
+      "Selected to participate in a Virtual Internship Program focusing on the Artificial Intelligence (AI) domain.",
+      "Gained direct exposure to real-world projects and challenges in the technology industry to build a professional portfolio.",
+      "Developed practical industry experience through remote execution of AI projects."
+    ],
+    color: "#8B5CF6",
+    logo: "/images/experience/logo-syntecxhub.png",
+    images: [
+      "/images/experience/syntecxhub-1.jpg",
+    ],
+    isDocument: true
+  },
+  {
+    company: "Oasis Infobyte",
+    role: "Web Development and Designing Intern",
+    period: "May 2026 - Present",
+    category: "professional",
+    points: [
+      "Participated in a one-month internship program focused on web development and designing.",
+      "Emphasized learning new skills and gaining a deep understanding of web development concepts through direct application of knowledge.",
+      "Completed technical tasks designed to build capabilities for handling future projects."
+    ],
+    color: "#F59E0B",
+    logo: "/images/experience/logo-oasis.jpg",
+    images: [
+      "/images/experience/oasis-1.jpg",
+    ],
+    isDocument: true
+  },
+ 
   {
     company: "Diskominfosantik (Kominfo)",
     role: "Software Developer Intern",
@@ -39,7 +76,8 @@ export const experiences: Experience[] = [
     logo: "/images/experience/logo-kominfo.jpg",
     images: [
       "/images/experience/kominfo-1.png",
-    ]
+    ],
+     isDocument: true
   },
   {
     company: "CodSoft",

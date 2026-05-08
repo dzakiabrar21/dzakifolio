@@ -108,12 +108,18 @@ export default function Experience() {
                             {exp.images.map((img, i) => (
                               <div
                                 key={i}
-                                className="w-full aspect-video rounded-xl overflow-hidden border border-white/[0.06]"
+                                className={`w-full rounded-xl overflow-hidden border border-white/[0.06] ${
+                                  exp.isDocument 
+                                    ? 'aspect-[1/1.414] bg-white/[0.02] flex items-center justify-center p-2' 
+                                    : 'aspect-video'
+                                }`}
                               >
                                 <img
                                   src={img}
                                   alt={`${exp.company} - ${i + 1}`}
-                                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                                  className={`w-full h-full hover:scale-105 transition-transform duration-500 ${
+                                    exp.isDocument ? 'object-contain' : 'object-cover'
+                                  }`}
                                 />
                               </div>
                             ))}

@@ -4,26 +4,26 @@ import Link from 'next/link';
 export default function Hero() {
   return (
     <section id="introduction" className="pb-10">
-      {/* Name */}
-      <h1 className="text-white text-3xl md:text-[42px] font-bold leading-tight md:leading-[50px] font-Inter tracking-tight mb-3">
+      {/* Name — slide in dari kanan, delay sedikit */}
+      <h1 className="text-white text-3xl md:text-[42px] font-bold leading-tight md:leading-[50px] font-Inter tracking-tight mb-3 animate-slide-right delay-100">
         Muhammad Dzaki Abrar
       </h1>
 
-      {/* Role */}
-      <p className="text-white/50 text-base md:text-[18px] font-normal font-Inter mb-5">
+      {/* Role — fade up */}
+      <p className="text-white/50 text-base md:text-[18px] font-normal font-Inter mb-5 animate-fade-up delay-200">
         Informatics Student · AI Enthusiast
       </p>
 
-      {/* Social Links Row */}
-      <div className="flex items-center gap-4 flex-wrap mb-8">
+      {/* Social Links Row — fade up */}
+      <div className="flex items-center gap-4 flex-wrap mb-8 animate-fade-up delay-300">
         <SocialLink href="https://github.com/dzakiabrar21" icon={<Github size={15} />} label="GitHub" />
         <SocialLink href="https://www.linkedin.com/in/muhammad-dzaki-abrar" icon={<Linkedin size={15} />} label="LinkedIn" />
         <SocialLink href="https://www.instagram.com/dzaki.abrarr" icon={<Instagram size={15} />} label="Instagram" />
         <SocialLink href="mailto:muhammaddzakiabrar21@gmail.com" icon={<Mail size={15} />} label="Email" />
       </div>
 
-      {/* Bio Description */}
-      <p className="text-white text-[14px] md:text-[15px] font-normal leading-relaxed md:leading-[26px] font-Inter max-w-[650px]">
+      {/* Bio Description — fade up */}
+      <p className="text-white text-[14px] md:text-[15px] font-normal leading-relaxed md:leading-[26px] font-Inter max-w-[650px] animate-fade-up delay-400">
         Informatics student at President University specializing in Artificial Intelligence. 
         I am passionate about building high-performance web applications and intelligent systems, 
         focusing on bridging the gap between complex algorithms and seamless user experiences.
