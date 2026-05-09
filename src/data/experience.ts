@@ -27,7 +27,7 @@ export const experiences: Experience[] = [
     images: []
   },
 
-  {
+  /*{
     company: "SYNTECXHUB",
     role: "Artificial Intelligence Intern",
     period: "May 2026 - Present",
@@ -60,7 +60,7 @@ export const experiences: Experience[] = [
       "/images/experience/oasis-1.jpg",
     ],
     isDocument: true
-  },
+  }, */
  
   {
     company: "Diskominfosantik (Kominfo)",
@@ -91,8 +91,9 @@ export const experiences: Experience[] = [
     color: "#10B981",
     logo: "/images/experience/logo-codsoft.jpg",
     images: [
-      "/images/experience/codsoft-1.png",
-    ]
+      "/images/experience/codsoft-1.jpg",
+    ],
+    isDocument: true
   },
 
   // ── Organizational Leadership ──

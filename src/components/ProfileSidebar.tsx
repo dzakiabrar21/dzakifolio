@@ -6,7 +6,7 @@ import Link from 'next/link';
 const navSections = [
   { id: 'introduction', label: 'Introduction' },
   { id: 'experience', label: 'Organization & Work Experience' },
-  { id: 'committee', label: 'Committee' },
+  { id: 'project-event', label: 'Project Event' },
   { id: 'skills', label: 'Technical Skills' },
   { id: 'contact', label: 'Contact' },
 ];

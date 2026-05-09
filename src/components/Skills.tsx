@@ -1,4 +1,5 @@
 import { Code2, Layout, Brain, Database, Wrench, FileCode2, Terminal, Monitor, Sparkles, Server, Cloud } from 'lucide-react';
+import ScrollReveal from './ScrollReveal';
 
 const skillCategories = [
   {
@@ -73,14 +74,14 @@ export default function Skills() {
       {/* Categories List */}
       <div className="flex flex-col gap-10">
         {skillCategories.map((category) => (
-          <div key={category.title} className="flex flex-col gap-3">
-            <h3 className="text-white text-[18px] md:text-[20px] font-bold font-Inter">
+          <ScrollReveal key={category.title} className="flex flex-col gap-3">
+            <h3 className="reveal text-white text-[18px] md:text-[20px] font-bold font-Inter">
               {category.title}
             </h3>
-            <p className="text-white/60 text-[14px] md:text-[15px] font-normal leading-relaxed font-Inter max-w-2xl">
+            <p className="reveal text-white/60 text-[14px] md:text-[15px] font-normal leading-relaxed font-Inter max-w-2xl">
               {category.description}
             </p>
-            <div className="flex flex-wrap gap-3 mt-2">
+            <div className="reveal flex flex-wrap gap-3 mt-2">
               {category.skills.map((skill) => (
                 <div 
                   key={skill.name} 
@@ -95,7 +96,7 @@ export default function Skills() {
                 </div>
               ))}
             </div>
-          </div>
+          </ScrollReveal>
         ))}
       </div>
     </section>

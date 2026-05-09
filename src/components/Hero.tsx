@@ -1,7 +1,13 @@
-import { Github, Linkedin, Instagram, Mail, Monitor, ArrowRight } from 'lucide-react';
-import Link from 'next/link';
+"use client";
+
+import { useState } from 'react';
+import { Github, Linkedin, Instagram, Mail, Monitor, ArrowRight, Check } from 'lucide-react';
+import EmailModal from './EmailModal';
 
 export default function Hero() {
+  const [isEmailModalOpen, setIsEmailModalOpen] = useState(false);
+  const email = "muhammaddzakiabrar21@gmail.com";
+
   return (
     <section id="introduction" className="pb-10">
       {/* Name — slide in dari kanan, delay sedikit */}
@@ -19,7 +25,14 @@ export default function Hero() {
         <SocialLink href="https://github.com/dzakiabrar21" icon={<Github size={15} />} label="GitHub" />
         <SocialLink href="https://www.linkedin.com/in/muhammad-dzaki-abrar" icon={<Linkedin size={15} />} label="LinkedIn" />
         <SocialLink href="https://www.instagram.com/dzaki.abrarr" icon={<Instagram size={15} />} label="Instagram" />
-        <SocialLink href="mailto:muhammaddzakiabrar21@gmail.com" icon={<Mail size={15} />} label="Email" />
+        
+        <button 
+          onClick={() => setIsEmailModalOpen(true)}
+          className="inline-flex items-center gap-1.5 text-white/40 hover:text-white/70 text-[13px] font-medium font-Inter transition-colors cursor-pointer"
+        >
+          <Mail size={15} />
+          <span>Email</span>
+        </button>
       </div>
 
       {/* Bio Description — fade up */}
@@ -28,6 +41,13 @@ export default function Hero() {
         I am passionate about building high-performance web applications and intelligent systems, 
         focusing on bridging the gap between complex algorithms and seamless user experiences.
       </p>
+
+      {/* Email Modal */}
+      <EmailModal 
+        isOpen={isEmailModalOpen} 
+        onClose={() => setIsEmailModalOpen(false)} 
+        email={email} 
+      />
     </section>
   );
 }
