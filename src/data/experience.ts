@@ -24,7 +24,9 @@ export const experiences: Experience[] = [
     ],
     color: "#0ea5e9",
     logo: "/images/experience/logo-mandiri.jpg",
-    images: []
+    images: [
+      "/images/certificates/mandiri-mobile-apps.jpg",
+    ]
   },
 
   /*{
