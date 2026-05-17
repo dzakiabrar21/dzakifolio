@@ -4,12 +4,15 @@ import { useState, useEffect } from 'react';
 import { CircleUser, LayoutGrid, FileText } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
+    setMounted(true);
     const handleWindowScroll = () => {
       setScrolled(window.scrollY > 50);
     };
@@ -19,9 +22,7 @@ export default function Navbar() {
 
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string, isPage: boolean) => {
     if (isPage) return;
-
     if (pathname !== '/') return;
-
     e.preventDefault();
     const element = document.getElementById(targetId);
     if (element) {
@@ -29,9 +30,10 @@ export default function Navbar() {
     }
   };
 
+  // Mobile order: Projects | About (center) | Certificates
   const navItems = [
-    { id: 'about', label: 'About', icon: CircleUser, href: '/' },
     { id: 'projects', label: 'Projects', icon: LayoutGrid, isPage: true, href: '/projects' },
+    { id: 'about', label: 'About', icon: CircleUser, href: '/' },
     { id: 'certificates', label: 'Certificates', icon: FileText, isPage: true, href: '/certificates' },
   ];
 
@@ -51,10 +53,9 @@ export default function Navbar() {
       }`}>
         <div className="max-w-[1428px] mx-auto px-4 md:px-[122px] h-16 flex items-center justify-between">
           <div className="hidden md:flex min-w-[140px]" />
-
-          {/* Center: Pill Navigation */}
           <div className="hidden md:flex items-center bg-white/[0.06] border border-white/[0.08] rounded-full px-1.5 py-1.5 gap-1">
-            {navItems.map((item) => {
+            {/* Desktop: About | Projects | Certificates */}
+            {[navItems[1], navItems[0], navItems[2]].map((item) => {
               const active = isActive(item);
               const Icon = item.icon;
               return (
@@ -74,15 +75,14 @@ export default function Navbar() {
               );
             })}
           </div>
-
           <div className="hidden md:flex min-w-[140px]" />
         </div>
       </nav>
 
-      {/* Mobile Bottom Tab Bar */}
-      <nav className="fixed bottom-0 left-0 right-0 z-50 md:hidden">
-        <div className="bg-black/85 backdrop-blur-xl border-t border-white/[0.08] pb-safe">
-          <div className="flex items-center justify-around max-w-sm mx-auto">
+      {/* Mobile Floating Bottom Tab Bar */}
+      <nav className="fixed bottom-0 left-0 right-0 z-50 md:hidden pointer-events-none">
+        <div className="flex justify-center pb-5 px-10">
+          <div className="pointer-events-auto w-full flex items-center justify-around bg-white/[0.12] backdrop-blur-2xl border border-white/[0.15] rounded-full px-3 py-2.5 shadow-[0_4px_30px_rgba(0,0,0,0.35)]">
             {navItems.map((item) => {
               const active = isActive(item);
               const Icon = item.icon;
@@ -91,23 +91,43 @@ export default function Navbar() {
                   key={item.id}
                   href={item.href || '/'}
                   onClick={(e) => handleScroll(e, item.id === 'about' ? 'hero' : item.id, !!item.isPage)}
-                  className="flex flex-col items-center gap-0.5 py-2 px-5 group"
+                  className="relative flex items-center px-3 py-2"
                 >
-                  <div className={`flex items-center justify-center w-9 h-6 rounded-full transition-all duration-200 ${
-                    active ? 'bg-white/15' : ''
-                  }`}>
+                  {/* Animated sliding pill background */}
+                  {active && (
+                    <motion.div
+                      layoutId="activeTab"
+                      className="absolute inset-0 bg-white/20 rounded-full"
+                      transition={{
+                        type: 'spring',
+                        stiffness: 400,
+                        damping: 32,
+                      }}
+                    />
+                  )}
+
+                  <span className="relative flex items-center gap-2">
                     <Icon
-                      size={18}
+                      size={20}
                       strokeWidth={active ? 2.2 : 1.6}
-                      className={`transition-all duration-200 ${
-                        active ? 'text-white' : 'text-white/40 group-hover:text-white/70'
+                      className={`flex-shrink-0 transition-colors duration-300 ${
+                        active ? 'text-white' : 'text-white/50'
                       }`}
                     />
-                  </div>
-                  <span className={`text-[9px] font-medium tracking-wide transition-all duration-200 ${
-                    active ? 'text-white' : 'text-white/40 group-hover:text-white/60'
-                  }`}>
-                    {item.label}
+                    <AnimatePresence initial={false}>
+                      {mounted && active && (
+                        <motion.span
+                          key={item.id + '-label'}
+                          initial={{ opacity: 0, width: 0 }}
+                          animate={{ opacity: 1, width: 'auto' }}
+                          exit={{ opacity: 0, width: 0 }}
+                          transition={{ type: 'spring', stiffness: 400, damping: 32 }}
+                          className="text-[11px] font-medium text-white whitespace-nowrap overflow-hidden"
+                        >
+                          {item.label}
+                        </motion.span>
+                      )}
+                    </AnimatePresence>
                   </span>
                 </Link>
               );
