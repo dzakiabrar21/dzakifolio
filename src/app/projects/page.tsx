@@ -12,7 +12,7 @@ export default function ProjectsRoute() {
   return (
     <main className="min-h-screen bg-black text-white selection:bg-emerald-500/30">
       <Navbar />
-      <div className="max-w-[1428px] mx-auto px-6 md:px-[122px] space-y-16 pb-12">
+      <div className="max-w-[1428px] mx-auto px-6 md:px-[122px] space-y-16 pb-20 md:pb-12">
         <ProjectsPage />
         <Contact />
       </div>

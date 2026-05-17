@@ -5,6 +5,27 @@ import { X, ArrowRight } from "lucide-react";
 
 const certificates = [
   {
+    title: "Spec-Driven Development with Kiro",
+    issuer: "Dicoding Indonesia",
+    date: "May 2026 – May 2029",
+    image: "/images/certificates/dicoding-spec-driven.jpg",
+    link: "https://www.dicoding.com/certificates/1RXYWWRM9ZVM"
+  },
+  {
+    title: "Learning Cloud Basics and Gen AI on AWS",
+    issuer: "Dicoding Indonesia",
+    date: "May 2026 – May 2029",
+    image: "/images/certificates/dicoding-dasar-cloud.jpg",
+    link: "https://www.dicoding.com/certificates/ERZRLL32OZYV"
+  },
+  {
+    title: "Certificate of Achievement – Bank Mandiri Mobile Apps Developer Project Based Internship Program",
+    issuer: "PT Bank Mandiri (Persero) Tbk.",
+    date: "May 2026",
+    image: "/images/certificates/mandiri-mobile-apps.jpg",
+    link: "#"
+  },
+  {
     title: "Learning AI Basics",
     issuer: "Dicoding Indonesia",
     date: "Apr 2026 – Apr 2029",
@@ -158,7 +179,7 @@ export default function Certificate() {
   };
 
   return (
-    <section id="certificates" className="w-full pt-32 pb-20 bg-black flex flex-col items-center min-h-screen">
+    <section id="certificates" className="w-full pt-8 md:pt-32 pb-20 bg-black flex flex-col items-center min-h-screen">
       <div className="w-full max-w-[1200px] px-6 md:px-12 flex flex-col items-center">
         {/* Section Title */}
         <h2 className="text-white text-[32px] md:text-[40px] font-bold leading-tight font-Inter tracking-tight mb-12 text-center">

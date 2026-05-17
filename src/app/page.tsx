@@ -12,7 +12,7 @@ export default function Home() {
       <Navbar />
 
       {/* Diperkecil max-width nya agar lebih ke tengah */}
-      <div className="max-w-[1150px] mx-auto px-6 md:px-12 pt-24">
+      <div className="max-w-[1150px] mx-auto px-6 md:px-12 pt-6 md:pt-24">
         <div className="flex flex-col md:flex-row gap-10 md:gap-16 relative">
 
           {/* LEFT SIDEBAR — 40% width, Fixed/Sticky */}
@@ -21,7 +21,7 @@ export default function Home() {
           </aside>
 
           {/* RIGHT CONTENT — 60% width, Scrollable, ditambahkan padding kanan agar tidak mepet */}
-          <div className="w-full md:w-[60%] min-w-0 pt-4 md:pt-8 pb-12 md:pr-8 lg:pr-12">
+          <div className="w-full md:w-[60%] min-w-0 pt-4 md:pt-8 pb-20 md:pb-12 md:pr-8 lg:pr-12">
             <Hero />
             <Experience />
             <Skills />

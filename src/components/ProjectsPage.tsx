@@ -42,7 +42,7 @@ export default function ProjectsPage() {
   }, [selectedProject, currentSlide, nextSlide]);
 
   return (
-    <section id="projects" className="w-full pt-32 pb-20 flex flex-col items-center min-h-screen">
+    <section id="projects" className="w-full pt-8 md:pt-32 pb-20 flex flex-col items-center min-h-screen">
       <div className="w-full max-w-[1200px] px-0 flex flex-col items-center">
         {/* Section Title */}
         <h2 className="text-white text-[26px] md:text-[32px] font-bold leading-tight font-Inter tracking-tight mb-10 text-center">
