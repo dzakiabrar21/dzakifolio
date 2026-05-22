@@ -30,10 +30,10 @@ export default function Navbar() {
     }
   };
 
-  // Mobile order: Projects | About (center) | Certificates
+  // Mobile order: About (left) | Projects (center) | Certificates (right)
   const navItems = [
-    { id: 'projects', label: 'Projects', icon: LayoutGrid, isPage: true, href: '/projects' },
     { id: 'about', label: 'About', icon: CircleUser, href: '/' },
+    { id: 'projects', label: 'Projects', icon: LayoutGrid, isPage: true, href: '/projects' },
     { id: 'certificates', label: 'Certificates', icon: FileText, isPage: true, href: '/certificates' },
   ];
 
@@ -55,7 +55,7 @@ export default function Navbar() {
           <div className="hidden md:flex min-w-[140px]" />
           <div className="hidden md:flex items-center bg-white/[0.06] border border-white/[0.08] rounded-full px-1.5 py-1.5 gap-1">
             {/* Desktop: About | Projects | Certificates */}
-            {[navItems[1], navItems[0], navItems[2]].map((item) => {
+            {navItems.map((item) => {
               const active = isActive(item);
               const Icon = item.icon;
               return (
