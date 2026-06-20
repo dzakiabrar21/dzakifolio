@@ -23,6 +23,7 @@ const skillCategories = [
       { name: "Next.js", icon: <Monitor size={14} /> },
       { name: "Node.js", icon: <Server size={14} /> },
       { name: "Tailwind CSS", icon: <Layout size={14} /> },
+      { name: "CodeIgniter", icon: <Code2 size={14} /> },
       { name: "Laravel", icon: <Code2 size={14} /> },
       { name: "Flutter", icon: <Monitor size={14} /> },
     ]
@@ -36,6 +37,7 @@ const skillCategories = [
       { name: "Scikit-learn", icon: <Sparkles size={14} /> },
       { name: "Computer Vision", icon: <Monitor size={14} /> },
       { name: "NLP", icon: <FileCode2 size={14} /> },
+      { name: "RAG", icon: <Sparkles size={14} /> },
     ]
   },
   {
@@ -44,9 +46,13 @@ const skillCategories = [
     skills: [
       { name: "MySQL", icon: <Database size={14} /> },
       { name: "PostgreSQL", icon: <Database size={14} /> },
+      { name: "SQL Server", icon: <Database size={14} /> },
+      { name: "SSMS", icon: <Database size={14} /> },
       { name: "Supabase", icon: <Cloud size={14} /> },
       { name: "Firebase", icon: <Cloud size={14} /> },
       { name: "Google Cloud", icon: <Cloud size={14} /> },
+      { name: "Microsoft Azure", icon: <Cloud size={14} /> },
+      { name: "Microsoft Fabric", icon: <Cloud size={14} /> },
       { name: "Vercel", icon: <Server size={14} /> },
     ]
   },
@@ -58,6 +64,8 @@ const skillCategories = [
       { name: "GitHub", icon: <Code2 size={14} /> },
       { name: "Figma", icon: <Layout size={14} /> },
       { name: "Jupyter Notebook", icon: <Terminal size={14} /> },
+      { name: "Power BI", icon: <Monitor size={14} /> },
+      { name: "Power Automate", icon: <Wrench size={14} /> },
       { name: "Blender 3D", icon: <Monitor size={14} /> },
     ]
   }

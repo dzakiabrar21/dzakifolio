@@ -11,7 +11,24 @@ export interface Experience {
 }
 
 export const experiences: Experience[] = [
+
   // ── Professional Experience ──
+  {
+    company: "PT. Omron Manufacturing Indonesia",
+    role: "IT Developer Intern — Quality Assurance DMS",
+    period: "May 2025 – Aug 2025",
+    category: "professional",
+    points: [
+      "Developed internal web applications using CodeIgniter under MVC architecture to support Device & Module Solutions (DMS) workflows.",
+      "Managed relational databases via SQL Server and SSMS to ensure data integrity across QA systems.",
+      "Conducted functional and performance testing to optimize document workflows and resolve technical issues in collaboration with the development team.",
+      "Maintained detailed system documentation to ensure high overall quality and operational continuity."
+    ],
+    color: "#CC0000",
+    logo: "/images/experience/logo-omron.png",
+    isDocument: true
+  },
+
    {
     company: "PT Bank Mandiri Tbk x Rakamin Academy",
     role: "Project-Based Intern — Mobile Application Developer",

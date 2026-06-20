@@ -5,6 +5,27 @@ import { X, ArrowRight } from "lucide-react";
 
 const certificates = [
   {
+    title: "Building Machine Learning Systems",
+    issuer: "Dicoding Indonesia",
+    date: "Jun 2026 – Jun 2029",
+    image: "/images/certificates/dicoding-ml-systems.png",
+    link: "https://www.dicoding.com/certificates/2VX30EK03XYQ"
+  },
+  {
+    title: "AI-Enabled Applications for Customer Service",
+    issuer: "IBM",
+    date: "May 2026",
+    image: "/images/certificates/ibm-ai-customer-service.png",
+    link: "https://www.credly.com/badges/e8713288-4090-47fd-a21d-756a8892073c/linked_in_profile"
+  },
+  {
+    title: "Make Agentic AI Work for You",
+    issuer: "IBM",
+    date: "May 2026",
+    image: "/images/certificates/ibm-agentic-ai.png",
+    link: "https://www.credly.com/badges/d9630596-56cb-478e-8315-c1b6c43141c4/linked_in_profile"
+  },
+  {
     title: "Spec-Driven Development with Kiro",
     issuer: "Dicoding Indonesia",
     date: "May 2026 – May 2029",
