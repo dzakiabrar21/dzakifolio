@@ -1,5 +1,20 @@
 export const projects = [
   {
+    title: "Level Up – AI Developer & UI/UX",
+    desc: "Adaptive digital education platform that transforms traditional curricula into an interactive video-game structure with personalized AI-driven learning paths.",
+    tags: ["Next.js", "React 19", "Tailwind CSS", "Appwrite"],
+    accuracy: "EdTech Platform",
+    category: "Web Development / AI Education",
+    popupDesc: "Adaptive digital education platform that transforms traditional curricula into an interactive video-game structure using Next.js (React 19) and Tailwind CSS, integrated with Appwrite Cloud as the BaaS backend. Developed an automated Onboarding Diagnostic Quiz to dynamically map user interests and engineered a secure system progression lock to ensure structured learning journeys.",
+    link: "https://e-learning-softengineer.vercel.app/",
+    images: [
+      "/images/projects/levelup-1.png",
+      "/images/projects/levelup-2.png",
+      "/images/projects/levelup-3.png",
+      "/images/projects/levelup-4.png",
+    ]
+  },
+  {
     title: "Autonomous Shape Sorting System (Smart Factory)",
     desc: "Prototipe otomasi industri yang mengintegrasikan Computer Vision (AI) dan IoT untuk mengklasifikasikan serta menyortir objek geometris secara otomatis di atas sabuk konveyor.",
     tags: ["YOLOv11", "ESP32", "React", "FastAPI"],
