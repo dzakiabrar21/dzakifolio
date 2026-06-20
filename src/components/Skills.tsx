@@ -64,8 +64,6 @@ const skillCategories = [
       { name: "GitHub", icon: <Code2 size={14} /> },
       { name: "Figma", icon: <Layout size={14} /> },
       { name: "Jupyter Notebook", icon: <Terminal size={14} /> },
-      { name: "Power BI", icon: <Monitor size={14} /> },
-      { name: "Power Automate", icon: <Wrench size={14} /> },
       { name: "Blender 3D", icon: <Monitor size={14} /> },
     ]
   }
