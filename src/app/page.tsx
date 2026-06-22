@@ -21,7 +21,7 @@ export default function Home() {
           </aside>
 
           {/* RIGHT CONTENT — 60% width, Scrollable, ditambahkan padding kanan agar tidak mepet */}
-          <div className="w-full md:w-[60%] min-w-0 pt-4 md:pt-8 pb-20 md:pb-12 md:pr-8 lg:pr-12">
+          <div className="w-full md:w-[60%] min-w-0 pt-4 md:pt-8 pb-28 md:pb-12 md:pr-8 lg:pr-12">
             <Hero />
             <Experience />
             <Skills />
