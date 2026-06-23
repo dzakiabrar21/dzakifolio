@@ -6,7 +6,7 @@ export const projects = [
     accuracy: "EdTech Platform",
     category: "Web Development / AI Education",
     popupDesc: "Adaptive digital education platform that transforms traditional curricula into an interactive video-game structure using Next.js (React 19) and Tailwind CSS, integrated with Appwrite Cloud as the BaaS backend. Developed an automated Onboarding Diagnostic Quiz to dynamically map user interests and engineered a secure system progression lock to ensure structured learning journeys.",
-    link: "https://e-learning-softeng-project.vercel.app/",
+    link: "https://e-learning-softeng-project.vercel.app/main/dashboard/red?interest=sport",
     images: [
       "/images/projects/levelup-1.png",
       "/images/projects/levelup-2.png",
