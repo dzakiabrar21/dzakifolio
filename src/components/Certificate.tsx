@@ -3,7 +3,51 @@
 import { useState } from "react";
 import { X, ArrowRight } from "lucide-react";
 
-const certificates = [
+type CertificateItem = {
+  title: string;
+  issuer: string;
+  date?: string;
+  credentialId?: string;
+  image?: string;
+  link: string;
+};
+
+const certificates: CertificateItem[] = [
+  {
+    title: "Google Agile Essentials",
+    issuer: "Google",
+    date: "Jul 2026",
+    image: "/images/certificates/google-agile-essentials.jpg",
+    link: "https://coursera.org/share/2ff6f41cb1b15c203aa45e38cfa6c04f"
+  },
+  {
+    title: "Google Business Intelligence",
+    issuer: "Google",
+    date: "Jul 2026",
+    image: "/images/certificates/google-business-intelligence.jpg",
+    link: "https://www.coursera.org/account/accomplishments/professional-cert/UFGBNXSZH7WM"
+  },
+  {
+    title: "Google AI",
+    issuer: "Google",
+    date: "Jul 2026",
+    image: "/images/certificates/google-ai.jpg",
+    link: "https://www.coursera.org/account/accomplishments/professional-cert/JC7AKXHOK23R"
+  },
+  {
+    title: "AI for Content Creation",
+    issuer: "Google",
+    date: "Jul 2026",
+    image: "/images/certificates/google-ai-content-creation.jpg",
+    link: "https://www.coursera.org/account/accomplishments/verify/6HTTUTZMAIL5"
+  },
+  {
+    title: "Foundations of Agile Project Management",
+    issuer: "Google",
+    date: "Jul 2026",
+    image: "/images/certificates/google-agile-project-management.jpg",
+    link: "https://www.coursera.org/account/accomplishments/verify/OBRMG0E2ZOPR"
+  },
   {
     title: "Building Machine Learning Systems",
     issuer: "Dicoding Indonesia",
@@ -212,21 +256,31 @@ export default function Certificate() {
           {certificates.map((cert, index) => (
             <div 
               key={index} 
-              className="flex flex-col group cursor-pointer animate-fadeIn"
-              onClick={() => openModal(cert.image)}
+              className={`flex flex-col group animate-fadeIn ${cert.image ? "cursor-pointer" : ""}`}
+              onClick={() => cert.image && openModal(cert.image)}
             >
               {/* Image Container */}
               <div className="w-full aspect-[4/3] rounded-xl overflow-hidden border border-white/10 bg-[#0D0D0D] mb-5">
-                <img 
-                  src={cert.image} 
-                  alt={cert.title}
-                  className="w-full h-full object-cover"
-                  // Fallback if image not found, using a gray background
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.src = "https://via.placeholder.com/600x450/1A1A1A/FFFFFF?text=Certificate";
-                  }}
-                />
+                {cert.image ? (
+                  <img
+                    src={cert.image}
+                    alt={cert.title}
+                    className="w-full h-full object-cover"
+                    // Fallback if image not found, using a gray background
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.src = "https://via.placeholder.com/600x450/1A1A1A/FFFFFF?text=Certificate";
+                    }}
+                  />
+                ) : (
+                  <div className="flex h-full w-full flex-col justify-between bg-gradient-to-br from-white to-[#f2f2f2] p-7 text-[#202124]">
+                    <span className="text-4xl font-bold tracking-tight"><span className="text-[#4285F4]">G</span><span className="text-[#EA4335]">o</span><span className="text-[#FBBC05]">o</span><span className="text-[#4285F4]">g</span><span className="text-[#34A853]">l</span><span className="text-[#EA4335]">e</span></span>
+                    <div>
+                      <p className="text-sm text-[#5f6368]">Google Career Certificates</p>
+                      <p className="mt-2 text-xl font-semibold leading-tight">{cert.title}</p>
+                    </div>
+                  </div>
+                )}
               </div>
 
               {/* Content Box */}
@@ -235,9 +289,14 @@ export default function Certificate() {
                   {cert.title}
                 </h3>
                 
-                <p className="text-[#99A1AF] text-[15px] font-normal leading-[24px] font-Inter mb-3">
-                  {cert.issuer} • {cert.date}
+                <p className="text-[#99A1AF] text-[15px] font-normal leading-[24px] font-Inter mb-1">
+                  {cert.issuer}{cert.date && ` • ${cert.date}`}
                 </p>
+                {cert.credentialId && (
+                  <p className="text-[#99A1AF] text-[13px] font-normal leading-[20px] font-Inter mb-3">
+                    Credential ID: {cert.credentialId}
+                  </p>
+                )}
 
                 {cert.link && cert.link !== "#" && (
                   <a
