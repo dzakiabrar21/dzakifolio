@@ -26,7 +26,12 @@ export const experiences: Experience[] = [
     ],
     color: "#CC0000",
     logo: "/images/experience/logo-omron.png",
-    isDocument: true
+    images: [
+      "/images/experience/omron-1.jpeg",
+      "/images/experience/omron-2.jpeg",
+      /* "/images/experience/omron-3.jpeg",*/
+    ],
+    
   },
 
    {

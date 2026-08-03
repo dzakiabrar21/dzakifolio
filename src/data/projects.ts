@@ -22,7 +22,7 @@ export const projects = [
     category: "AI / Robotics",
     popupDesc: "Prototipe otomasi industri yang mengintegrasikan Computer Vision (AI) dan IoT untuk mengklasifikasikan serta menyortir objek geometris secara otomatis di atas sabuk konveyor. Membandingkan YOLOv8 dan YOLOv11; memilih YOLOv11 karena 15% lebih sedikit parameter dan 25% lebih rendah GFLOPs. Mengembangkan logika non-blocking state-machine pada ESP32 untuk sinkronisasi presisi antara deteksi kamera dan gerakan pendorong mekanik, serta membangun dashboard interaktif untuk kontrol sensitivitas visi dan pemantauan statistik produksi.",
     github: "https://github.com/dzakiabrar21/robotics-final.git",
-    /* demo: "https://drive.google.com/file/d/1XJywHTe0Ny16rTqlXwfeLATpLe-MeJYc/view?usp=sharing" , */
+    demo: "https://drive.google.com/file/d/1XJywHTe0Ny16rTqlXwfeLATpLe-MeJYc/view?usp=sharing" , 
     images: [
       "/images/projects/robotics-1.png",
       "/images/projects/robotics-2.jpeg",
@@ -44,6 +44,8 @@ export const projects = [
       "/images/projects/trash-2.png",
       "/images/projects/trash-3.jpg",
       "/images/projects/trash-4.png",
+      "/images/projects/trash-5.png",
+      "/images/projects/trash-6.png",
     ]
   },
   {
