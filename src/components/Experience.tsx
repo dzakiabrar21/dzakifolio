@@ -5,6 +5,16 @@ import { experiences } from "@/data/experience";
 import { ChevronDown } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
 
+// Group experiences by category once outside component render
+const professional = experiences.filter(e => e.category === "professional");
+const leadership = experiences.filter(e => e.category === "leadership");
+const coordination = experiences.filter(e => e.category === "coordination");
+
+const sections = [
+  { title: "Organization & Work Experience", sectionId: "experience", items: [...professional, ...leadership] },
+  { title: "Project Event", sectionId: "project-event", items: coordination },
+];
+
 export default function Experience() {
   const [openKeys, setOpenKeys] = useState<Record<string, boolean>>({});
 
@@ -14,16 +24,6 @@ export default function Experience() {
       [key]: !prev[key]
     }));
   };
-
-  // Group experiences by category
-  const professional = experiences.filter(e => e.category === "professional");
-  const leadership = experiences.filter(e => e.category === "leadership");
-  const coordination = experiences.filter(e => e.category === "coordination");
-
-  const sections = [
-    { title: "Organization & Work Experience", sectionId: "experience", items: [...professional, ...leadership] },
-    { title: "Project Event", sectionId: "project-event", items: coordination },
-  ];
 
   return (
     <section className="w-full py-8 md:py-12">
@@ -60,6 +60,8 @@ export default function Experience() {
                               <img 
                                 src={exp.logo} 
                                 alt={`${exp.company} logo`}
+                                loading="lazy"
+                                decoding="async"
                                 className="w-full h-full object-cover"
                                 onError={(e) => {
                                   const target = e.target as HTMLImageElement;
@@ -92,41 +94,45 @@ export default function Experience() {
                       <div className={`overflow-hidden transition-all duration-400 ease-in-out ${
                         isOpen ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'
                       }`}>
-                        <div className="px-2 md:px-4 pb-6 pt-1 flex flex-col gap-5">
-                          {/* Work Points */}
-                          <ul className="space-y-3 pl-1">
-                            {exp.points.map((point, i) => (
-                              <li key={i} className="flex items-start gap-3 text-white text-[13px] md:text-[14px] font-normal leading-relaxed font-Inter">
-                                <span className="text-white/60 pt-[6px] flex-shrink-0 text-[6px]">●</span>
-                                <span>{point}</span>
-                              </li>
-                            ))}
-                          </ul>
-
-                          {/* Thumbnail Images */}
-                          {exp.images && exp.images.length > 0 && (
-                            <div className="grid grid-cols-2 gap-3 md:gap-4 pt-2">
-                              {exp.images.map((img, i) => (
-                                <div
-                                  key={i}
-                                  className={`w-full rounded-xl overflow-hidden border border-white/[0.06] ${
-                                    exp.isDocument 
-                                      ? 'aspect-[1/1.414] bg-white/[0.02] flex items-center justify-center p-2' 
-                                      : 'aspect-video'
-                                  }`}
-                                >
-                                  <img
-                                    src={img}
-                                    alt={`${exp.company} - ${i + 1}`}
-                                    className={`w-full h-full hover:scale-105 transition-transform duration-500 ${
-                                      exp.isDocument ? 'object-contain' : 'object-cover'
-                                    }`}
-                                  />
-                                </div>
+                        {isOpen && (
+                          <div className="px-2 md:px-4 pb-6 pt-1 flex flex-col gap-5">
+                            {/* Work Points */}
+                            <ul className="space-y-3 pl-1">
+                              {exp.points.map((point, i) => (
+                                <li key={i} className="flex items-start gap-3 text-white text-[13px] md:text-[14px] font-normal leading-relaxed font-Inter">
+                                  <span className="text-white/60 pt-[6px] flex-shrink-0 text-[6px]">●</span>
+                                  <span>{point}</span>
+                                </li>
                               ))}
-                            </div>
-                          )}
-                        </div>
+                            </ul>
+
+                            {/* Thumbnail Images — Only rendered when accordion is expanded */}
+                            {exp.images && exp.images.length > 0 && (
+                              <div className="grid grid-cols-2 gap-3 md:gap-4 pt-2">
+                                {exp.images.map((img, i) => (
+                                  <div
+                                    key={i}
+                                    className={`w-full rounded-xl overflow-hidden border border-white/[0.06] ${
+                                      exp.isDocument 
+                                        ? 'aspect-[1/1.414] bg-white/[0.02] flex items-center justify-center p-2' 
+                                        : 'aspect-video'
+                                    }`}
+                                  >
+                                    <img
+                                      src={img}
+                                      alt={`${exp.company} - ${i + 1}`}
+                                      loading="lazy"
+                                      decoding="async"
+                                      className={`w-full h-full hover:scale-105 transition-transform duration-500 ${
+                                        exp.isDocument ? 'object-contain' : 'object-cover'
+                                      }`}
+                                    />
+                                  </div>
+                                ))}
+                              </div>
+                            )}
+                          </div>
+                        )}
                       </div>
                     </div>
                   </div>

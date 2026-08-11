@@ -32,14 +32,28 @@ export default function ProjectsPage() {
     }
   }, [selectedProject]);
 
-  // Auto-slide every 4 seconds
+  // Auto-slide every 4 seconds & handle Keyboard navigation
   useEffect(() => {
     if (selectedProject === null) return;
+    document.body.style.overflow = "hidden";
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeModal();
+      if (e.key === "ArrowRight") nextSlide();
+      if (e.key === "ArrowLeft") prevSlide();
+    };
+    window.addEventListener("keydown", handleKeyDown);
+
     const interval = setInterval(() => {
       nextSlide();
     }, 4000);
-    return () => clearInterval(interval);
-  }, [selectedProject, currentSlide, nextSlide]);
+
+    return () => {
+      clearInterval(interval);
+      window.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = "unset";
+    };
+  }, [selectedProject, currentSlide, nextSlide, prevSlide]);
 
   return (
     <section id="projects" className="w-full pt-8 md:pt-32 pb-20 flex flex-col items-center min-h-screen">
@@ -65,6 +79,8 @@ export default function ProjectsPage() {
                 <img
                   src={project.images[0]}
                   alt={project.title}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
 

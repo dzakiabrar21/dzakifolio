@@ -42,6 +42,14 @@ export default function Hero() {
         focusing on bridging the gap between complex algorithms and seamless user experiences.
       </p>
 
+      {/* Key Metrics Grid — Glassmorphism Stats Bar */}
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-8 animate-fade-up delay-500">
+        <StatCard value="10+" label="Projects Built" />
+        <StatCard value="4" label="Tech Internships" />
+        <StatCard value="85%" label="AI mAP Accuracy" />
+        <StatCard value="90%+" label="Speed Optimized" />
+      </div>
+
       {/* Email Modal */}
       <EmailModal 
         isOpen={isEmailModalOpen} 
@@ -49,6 +57,19 @@ export default function Hero() {
         email={email} 
       />
     </section>
+  );
+}
+
+function StatCard({ value, label }: { value: string; label: string }) {
+  return (
+    <div className="bg-white/[0.03] border border-white/[0.08] rounded-xl p-3.5 flex flex-col gap-0.5 hover:bg-white/[0.06] hover:border-white/20 transition-all duration-300 group cursor-default">
+      <span className="text-white text-[20px] md:text-[22px] font-bold font-Inter tracking-tight group-hover:text-emerald-400 transition-colors">
+        {value}
+      </span>
+      <span className="text-white/40 text-[11px] font-medium font-Inter tracking-wide uppercase">
+        {label}
+      </span>
+    </div>
   );
 }
 

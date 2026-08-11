@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     siteName: "Muhammad Dzaki Abrar Portfolio",
     images: [
       {
-        url: "/images/image(4).JPG",
+        url: "/images/image(4).webp",
         width: 800,
         height: 600,
         alt: "Muhammad Dzaki Abrar — Software & Web Developer",
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Muhammad Dzaki Abrar — Software & Web Developer",
     description: "Explore my projects in AI, Robotics, and Full-Stack Development.",
-    images: ["/images/image(4).JPG"],
+    images: ["/images/image(4).webp"],
   },
 };
 

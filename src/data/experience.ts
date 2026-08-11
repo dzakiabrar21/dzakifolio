@@ -25,11 +25,11 @@ export const experiences: Experience[] = [
       "Maintained detailed system documentation to ensure high overall quality and operational continuity."
     ],
     color: "#CC0000",
-    logo: "/images/experience/logo-omron.png",
+    logo: "/images/experience/logo-omron.webp",
     images: [
-      "/images/experience/omron-1.jpeg",
-      "/images/experience/omron-2.jpeg",
-      /* "/images/experience/omron-3.jpeg",*/
+      "/images/experience/omron-1.webp",
+      "/images/experience/omron-2.webp",
+      /* "/images/experience/omron-3.webp",*/
     ],
     
   },
@@ -45,9 +45,9 @@ export const experiences: Experience[] = [
       "Collaborates on end-to-end mobile development tasks, from UI/UX implementation to integrating functional components for financial services."
     ],
     color: "#0ea5e9",
-    logo: "/images/experience/logo-mandiri.jpg",
+    logo: "/images/experience/logo-mandiri.webp",
     images: [
-      "/images/certificates/mandiri-mobile-apps.jpg",
+      "/images/certificates/mandiri-mobile-apps.webp",
     ]
   },
 
@@ -62,9 +62,9 @@ export const experiences: Experience[] = [
       "Developed practical industry experience through remote execution of AI projects."
     ],
     color: "#8B5CF6",
-    logo: "/images/experience/logo-syntecxhub.png",
+    logo: "/images/experience/logo-syntecxhub.webp",
     images: [
-      "/images/experience/syntecxhub-1.jpg",
+      "/images/experience/syntecxhub-1.webp",
     ],
     isDocument: true
   },
@@ -79,9 +79,9 @@ export const experiences: Experience[] = [
       "Completed technical tasks designed to build capabilities for handling future projects."
     ],
     color: "#F59E0B",
-    logo: "/images/experience/logo-oasis.jpg",
+    logo: "/images/experience/logo-oasis.webp",
     images: [
-      "/images/experience/oasis-1.jpg",
+      "/images/experience/oasis-1.webp",
     ],
     isDocument: true
   }, */
@@ -97,9 +97,9 @@ export const experiences: Experience[] = [
       "Created interactive admin dashboards with dynamic SVG data visualizations."
     ],
     color: "#2B7FFF",
-    logo: "/images/experience/logo-kominfo.jpg",
+    logo: "/images/experience/logo-kominfo.webp",
     images: [
-      "/images/experience/kominfo-1.png",
+      "/images/experience/kominfo-1.webp",
     ],
      isDocument: true
   },
@@ -113,9 +113,9 @@ export const experiences: Experience[] = [
       "Focused on developing and mastering new skills through an intensive 1-month virtual internship program."
     ],
     color: "#10B981",
-    logo: "/images/experience/logo-codsoft.jpg",
+    logo: "/images/experience/logo-codsoft.webp",
     images: [
-      "/images/experience/codsoft-1.jpg",
+      "/images/experience/codsoft-1.webp",
     ],
     isDocument: true
   },
@@ -132,10 +132,10 @@ export const experiences: Experience[] = [
       "Facilitates high-level coordination between various internal departments to streamline project execution and enhance member engagement."
     ],
     color: "#10B981",
-    logo: "/images/experience/logo-hanapu.jpeg",
+    logo: "/images/experience/logo-hanapu.webp",
     images: [
-      "/images/experience/hanapu-1.jpeg",
-      "/images/experience/hanapu-2.jpeg",
+      "/images/experience/hanapu-1.webp",
+      "/images/experience/hanapu-2.webp",
     ]
   },
   {
@@ -150,11 +150,11 @@ export const experiences: Experience[] = [
       "Supervised internal projects like 'Pormatics' to foster a collaborative environment."
     ],
     color: "#FDC700",
-    logo: "/images/experience/logo-puma.png",
+    logo: "/images/experience/logo-puma.webp",
     images: [
-      "/images/experience/puma-1.jpeg",
-      "/images/experience/puma-2.png",
-      "/images/experience/puma-3.jpeg",
+      "/images/experience/puma-1.webp",
+      "/images/experience/puma-2.webp",
+      "/images/experience/puma-3.webp",
     ]
   },
   {
@@ -168,11 +168,11 @@ export const experiences: Experience[] = [
       "Managed resources and coordinated with division members to ensure the health and well-being of fellow students throughout the 2023-2024 term."
     ],
     color: "#06B6D4",
-    logo: "/images/experience/logo-osdiq.png",
+    logo: "/images/experience/logo-osdiq.webp",
     images: [
-      "/images/experience/osdiq-1.png",
-      "/images/experience/osdiq-2.png",
-      "/images/experience/osdiq-3.png",
+      "/images/experience/osdiq-1.webp",
+      "/images/experience/osdiq-2.webp",
+      "/images/experience/osdiq-3.webp",
     ]
   },
   // ── Project & Event Coordination ──
@@ -188,9 +188,9 @@ export const experiences: Experience[] = [
     ],
     color: "#A855F7",
     images: [
-      "/images/experience/temualumni-1.png",
-      "/images/experience/temualumni-2.JPG",
-      "/images/experience/temualumni-3.jpeg",
+      "/images/experience/temualumni-1.webp",
+      "/images/experience/temualumni-2.webp",
+      "/images/experience/temualumni-3.webp",
     ]
   },
   {
@@ -204,8 +204,8 @@ export const experiences: Experience[] = [
     ],
     color: "#EF4444",
     images: [
-      "/images/experience/workshop-1.JPG",
-      "/images/experience/workshop-2.png",
+      "/images/experience/workshop-1.webp",
+      "/images/experience/workshop-2.webp",
     ]
   },
   {
@@ -219,8 +219,8 @@ export const experiences: Experience[] = [
     ],
     color: "#F97316",
     images: [
-      "/images/experience/coddoc-1.jpeg",
-      "/images/experience/coddoc-2.jpeg",
+      "/images/experience/coddoc-1.webp",
+      "/images/experience/coddoc-2.webp",
     ]
   },
   {
@@ -234,8 +234,8 @@ export const experiences: Experience[] = [
     ],
     color: "#10B981",
     images: [
-      "/images/experience/unitics-1.jpeg",
-      "/images/experience/unitics-2.jpeg",
+      "/images/experience/unitics-1.webp",
+      "/images/experience/unitics-2.webp",
     ]
   },
   {
@@ -249,8 +249,8 @@ export const experiences: Experience[] = [
     ],
     color: "#EC4899",
     images: [
-      "/images/experience/fr-1.jpg",
-      "/images/experience/fr-2.png",
+      "/images/experience/fr-1.webp",
+      "/images/experience/fr-2.webp",
     ]
   },
   {
@@ -264,8 +264,8 @@ export const experiences: Experience[] = [
     ],
     color: "#06B6D4",
     images: [
-      "/images/experience/infoorum-1.jpeg",
-      "/images/experience/infoorum-2.jpeg",
+      "/images/experience/infoorum-1.webp",
+      "/images/experience/infoorum-2.webp",
     ]
   },
   {
@@ -279,9 +279,9 @@ export const experiences: Experience[] = [
     ],
     color: "#8B5CF6",
     images: [
-      "/images/experience/compshere-1.jpeg",
-      "/images/experience/compshere-2.jpeg",
-      "/images/experience/compshere-3.png",
+      "/images/experience/compshere-1.webp",
+      "/images/experience/compshere-2.webp",
+      "/images/experience/compshere-3.webp",
     ]
   },
   {
@@ -295,8 +295,8 @@ export const experiences: Experience[] = [
     ],
     color: "#F59E0B",
     images: [
-      "/images/experience/printernal-1.JPG",
-      "/images/experience/printernal-2.jpeg",
+      "/images/experience/printernal-1.webp",
+      "/images/experience/printernal-2.webp",
     ]
   },
   {
@@ -310,7 +310,7 @@ export const experiences: Experience[] = [
     ],
     color: "#EF4444",
     images: [
-       "/images/experience/guestlecture-1.jpeg",
+       "/images/experience/guestlecture-1.webp",
       
     ]
   },

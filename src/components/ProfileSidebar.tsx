@@ -24,8 +24,10 @@ export default function ProfileSidebar() {
       {/* Circular Profile Photo — scale in dari kecil */}
       <div className="relative w-[200px] h-[200px] md:w-[240px] md:h-[240px] rounded-full overflow-hidden flex-shrink-0 border-2 border-white/10 shadow-2xl animate-scale-in delay-0">
         <img 
-          src="/images/image(4).JPG"
+          src="/images/image(4).webp"
           alt="Muhammad Dzaki Abrar"
+          loading="lazy"
+          decoding="async"
           className="w-full h-full object-cover"
         />
       </div>
@@ -58,7 +60,8 @@ export default function ProfileSidebar() {
           <button
             key={section.id}
             onClick={() => scrollTo(section.id)}
-            className={`flex items-center gap-2 text-left text-white/40 hover:text-white/70 text-[13px] font-Inter py-2 px-3 rounded-lg hover:bg-white/[0.03] transition-all cursor-pointer animate-fade-up delay-${[350, 400, 450, 500, 600][i] ?? 600}`}
+            style={{ animationDelay: `${350 + i * 50}ms` }}
+            className="flex items-center gap-2 text-left text-white/40 hover:text-white/70 text-[13px] font-Inter py-2 px-3 rounded-lg hover:bg-white/[0.03] transition-all cursor-pointer animate-fade-up"
           >
             <span className="text-white/20">—</span>
             {section.label}

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { X, ArrowRight } from "lucide-react";
 
 type CertificateItem = {
@@ -14,220 +14,227 @@ type CertificateItem = {
 
 const certificates: CertificateItem[] = [
   {
+    title: "AI Productivity and AI API Integration for Developers",
+    issuer: "Hacktiv8 Indonesia",
+    date: "Jul 2026",
+    image: "/images/certificates/hacktiv8-ai-productivity.webp",
+    link: "https://students.hacktiv8.com/certificates/7b14b42d-d831-4f55-b85b-e40d0144a71f"
+  },
+  {
     title: "Google Agile Essentials",
     issuer: "Google",
     date: "Jul 2026",
-    image: "/images/certificates/google-agile-essentials.jpg",
+    image: "/images/certificates/google-agile-essentials.webp",
     link: "https://coursera.org/share/2ff6f41cb1b15c203aa45e38cfa6c04f"
   },
   {
     title: "Google Business Intelligence",
     issuer: "Google",
     date: "Jul 2026",
-    image: "/images/certificates/google-business-intelligence.jpg",
+    image: "/images/certificates/google-business-intelligence.webp",
     link: "https://www.coursera.org/account/accomplishments/professional-cert/UFGBNXSZH7WM"
   },
   {
     title: "Google AI",
     issuer: "Google",
     date: "Jul 2026",
-    image: "/images/certificates/google-ai.jpg",
+    image: "/images/certificates/google-ai.webp",
     link: "https://www.coursera.org/account/accomplishments/professional-cert/JC7AKXHOK23R"
   },
   {
     title: "AI for Content Creation",
     issuer: "Google",
     date: "Jul 2026",
-    image: "/images/certificates/google-ai-content-creation.jpg",
+    image: "/images/certificates/google-ai-content-creation.webp",
     link: "https://www.coursera.org/account/accomplishments/verify/6HTTUTZMAIL5"
   },
   {
     title: "Foundations of Agile Project Management",
     issuer: "Google",
     date: "Jul 2026",
-    image: "/images/certificates/google-agile-project-management.jpg",
+    image: "/images/certificates/google-agile-project-management.webp",
     link: "https://www.coursera.org/account/accomplishments/verify/OBRMG0E2ZOPR"
   },
   {
     title: "Building Machine Learning Systems",
     issuer: "Dicoding Indonesia",
     date: "Jun 2026 – Jun 2029",
-    image: "/images/certificates/dicoding-ml-systems.png",
+    image: "/images/certificates/dicoding-ml-systems.webp",
     link: "https://www.dicoding.com/certificates/2VX30EK03XYQ"
   },
   {
     title: "AI-Enabled Applications for Customer Service",
     issuer: "IBM",
     date: "May 2026",
-    image: "/images/certificates/ibm-ai-customer-service.png",
+    image: "/images/certificates/ibm-ai-customer-service.webp",
     link: "https://www.credly.com/badges/e8713288-4090-47fd-a21d-756a8892073c/linked_in_profile"
   },
   {
     title: "Make Agentic AI Work for You",
     issuer: "IBM",
     date: "May 2026",
-    image: "/images/certificates/ibm-agentic-ai.png",
+    image: "/images/certificates/ibm-agentic-ai.webp",
     link: "https://www.credly.com/badges/d9630596-56cb-478e-8315-c1b6c43141c4/linked_in_profile"
   },
   {
     title: "Spec-Driven Development with Kiro",
     issuer: "Dicoding Indonesia",
     date: "May 2026 – May 2029",
-    image: "/images/certificates/dicoding-spec-driven.jpg",
+    image: "/images/certificates/dicoding-spec-driven.webp",
     link: "https://www.dicoding.com/certificates/1RXYWWRM9ZVM"
   },
   {
     title: "Learning Cloud Basics and Gen AI on AWS",
     issuer: "Dicoding Indonesia",
     date: "May 2026 – May 2029",
-    image: "/images/certificates/dicoding-dasar-cloud.jpg",
+    image: "/images/certificates/dicoding-dasar-cloud.webp",
     link: "https://www.dicoding.com/certificates/ERZRLL32OZYV"
   },
   {
     title: "Certificate of Achievement – Bank Mandiri Mobile Apps Developer Project Based Internship Program",
     issuer: "PT Bank Mandiri (Persero) Tbk.",
     date: "May 2026",
-    image: "/images/certificates/mandiri-mobile-apps.jpg",
+    image: "/images/certificates/mandiri-mobile-apps.webp",
     link: "#"
   },
   {
     title: "Learning AI Basics",
     issuer: "Dicoding Indonesia",
     date: "Apr 2026 – Apr 2029",
-    image: "/images/certificates/dicoding-dasar-ai.jpg",
+    image: "/images/certificates/dicoding-dasar-ai.webp",
     link: "https://www.dicoding.com/certificates/L4PQ9122OPO1"
   },
   {
     title: "Starting Programming with Python",
     issuer: "Dicoding Indonesia",
     date: "Apr 2026 – Apr 2029",
-    image: "/images/certificates/dicoding-python.jpg",
+    image: "/images/certificates/dicoding-python.webp",
     link: "https://www.dicoding.com/certificates/EYX4QJDK6PDL"
   },
   {
     title: "Learning Data Science Application with Microsoft Fabric",
     issuer: "Dicoding Indonesia",
     date: "Apr 2026 – Apr 2029",
-    image: "/images/certificates/dicoding-data-science.jpg",
+    image: "/images/certificates/dicoding-data-science.webp",
     link: "https://www.dicoding.com/certificates/KEXLQ7000PG2"
   },
   {
     title: "Learning Machine Learning for Beginners",
     issuer: "Dicoding Indonesia",
     date: "Apr 2026 – Apr 2029",
-    image: "/images/certificates/dicoding-machine-learning.jpg",
+    image: "/images/certificates/dicoding-machine-learning.webp",
     link: "https://www.dicoding.com/certificates/98XW0E549XM3"
   },
   {
     title: "Building Gen AI Applications with Microsoft Azure",
     issuer: "Dicoding Indonesia",
     date: "Apr 2026 – Apr 2029",
-    image: "/images/certificates/dicoding-gen-ai-azure.jpg",
+    image: "/images/certificates/dicoding-gen-ai-azure.webp",
     link: "https://www.dicoding.com/certificates/JMZVOE39RXN9"
   },
   {
     title: "Prompt Engineering for Software Developers",
     issuer: "Dicoding Indonesia",
     date: "Apr 2026 – Apr 2029",
-    image: "/images/certificates/dicoding-prompt-engineering.jpg",
+    image: "/images/certificates/dicoding-prompt-engineering.webp",
     link: "https://www.dicoding.com/certificates/1OP8R4JKVZQK"
   },
   {
     title: "Fundamental Deep Learning",
     issuer: "Dicoding Indonesia",
     date: "May 2026 – May 2029",
-    image: "/images/certificates/dicoding-deep-learning.jpg",
+    image: "/images/certificates/dicoding-deep-learning.webp",
     link: "https://www.dicoding.com/certificates/53XE1KO9VZRN"
   },
   {
     title: "Retrieval-Augmented Generation for Enhanced AI Outputs",
     issuer: "IBM",
     date: "May 2026",
-    image: "/images/certificates/ibm-rag.jpg",
+    image: "/images/certificates/ibm-rag.webp",
     link: "https://www.credly.com/badges/8eba4149-ca37-40a7-85e3-5de589989dbe/linked_in_profile"
   },
   {
     title: "Generative AI Essentials: Using LLMs to Work with Data",
     issuer: "IBM",
     date: "May 2026",
-    image: "/images/certificates/ibm-gen-ai-essentials.jpg",
+    image: "/images/certificates/ibm-gen-ai-essentials.webp",
     link: "https://www.credly.com/badges/560894de-1492-4cd2-9180-aaaca0231da9/linked_in_profile"
   },
   {
     title: "Data Fundamentals",
     issuer: "IBM",
     date: "May 2026",
-    image: "/images/certificates/ibm-data-fundamentals.jpg",
+    image: "/images/certificates/ibm-data-fundamentals.webp",
     link: "https://www.credly.com/badges/34e6b954-0fb1-4de3-a9ba-1689e08ab757/linked_in_profile"
   },
   {
     title: "Artificial Intelligence Fundamentals",
     issuer: "IBM",
     date: "Apr 2026",
-    image: "/images/certificates/ibm-ai-fundamentals.jpg",
+    image: "/images/certificates/ibm-ai-fundamentals.webp",
     link: "https://www.credly.com/badges/0292115d-ce29-42be-bcf5-2afed2f10ea2/linked_in_profile"
   },
   {
     title: "Alumni Gathering",
     issuer: "Project Manager • PUMA Informatics",
     date: "Dec 2024 – Jan 2025",
-    image: "/images/certificates/temualumni-1.png",
+    image: "/images/certificates/temualumni-1.webp",
     link: "#"
   },
   {
     title: "Alumni Workshop",
     issuer: "Supervisor • PUMA Informatics",
     date: "2024",
-    image: "/images/certificates/workshop-2.png",
+    image: "/images/certificates/workshop-2.webp",
     link: "#"
   },
   {
     title: "Company Visit",
     issuer: "Fundraising & FnB • PUMA Informatics",
     date: "2024",
-    image: "/images/certificates/fr-2.png",
+    image: "/images/certificates/fr-2.webp",
     link: "#"
   },
   {
     title: "Comsphere PUFA Computer Science",
     issuer: "Exhibition • President University",
     date: "2025",
-    image: "/images/certificates/compshere-3.png",
+    image: "/images/certificates/compshere-3.webp",
     link: "#"
   },
   {
     title: "Samsung SIC Logic Test",
     issuer: "Samsung Innovation Campus & Hacktiv8",
     date: "2025",
-    image: "/images/certificates/samsung.jpg",
+    image: "/images/certificates/samsung.webp",
     link: "#"
   },
   {
     title: "30 Juz Quran Memorization Certificate",
     issuer: "Ulumul Qur'an Education Foundation (YPUQ)",
     date: "2023",
-    image: "/images/certificates/hafalan.jpg",
+    image: "/images/certificates/hafalan.webp",
     link: "#"
   },
   {
     title: "OSDIQ Certificate (Insan Qurani Dayah Student Organization)",
     issuer: "Dayah Insan Qurani",
     date: "2022",
-    image: "/images/certificates/osdiq.jpg",
+    image: "/images/certificates/osdiq.webp",
     link: "#"
   },
   {
     title: "UKBI Certificate (Indonesian Language Proficiency Test)",
     issuer: "Ministry of Education and Culture (Kemendikbudristek)",
     date: "2025",
-    image: "/images/certificates/ukbi.jpg",
+    image: "/images/certificates/ukbi.webp",
     link: "#"
   },
   {
     title: "Vespa 2.0 Webinar",
     issuer: "Surabaya Excellence Scholarship Community",
     date: "2024",
-    image: "/images/certificates/vespa.png",
+    image: "/images/certificates/vespa.webp",
     link: "#"
   }
 ];
@@ -242,6 +249,21 @@ export default function Certificate() {
   const closeModal = () => {
     setSelectedImage(null);
   };
+
+  useEffect(() => {
+    if (selectedImage === null) return;
+    document.body.style.overflow = "hidden";
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeModal();
+    };
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = "unset";
+    };
+  }, [selectedImage]);
 
   return (
     <section id="certificates" className="w-full pt-8 md:pt-32 pb-20 bg-black flex flex-col items-center min-h-screen">
@@ -265,6 +287,8 @@ export default function Certificate() {
                   <img
                     src={cert.image}
                     alt={cert.title}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover"
                     // Fallback if image not found, using a gray background
                     onError={(e) => {

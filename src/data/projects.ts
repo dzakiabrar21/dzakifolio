@@ -8,10 +8,10 @@ export const projects = [
     popupDesc: "Adaptive digital education platform that transforms traditional curricula into an interactive video-game structure using Next.js (React 19) and Tailwind CSS, integrated with Appwrite Cloud as the BaaS backend. Developed an automated Onboarding Diagnostic Quiz to dynamically map user interests and engineered a secure system progression lock to ensure structured learning journeys.",
     link: "https://e-learning-softeng-project.vercel.app/main/dashboard/red?interest=sport",
     images: [
-      "/images/projects/levelup-1.png",
-      "/images/projects/levelup-2.png",
-      "/images/projects/levelup-3.png",
-      "/images/projects/levelup-4.png",
+      "/images/projects/levelup-1.webp",
+      "/images/projects/levelup-2.webp",
+      "/images/projects/levelup-3.webp",
+      "/images/projects/levelup-4.webp",
     ]
   },
   {
@@ -24,12 +24,12 @@ export const projects = [
     github: "https://github.com/dzakiabrar21/robotics-final.git",
     demo: "https://drive.google.com/file/d/1XJywHTe0Ny16rTqlXwfeLATpLe-MeJYc/view?usp=sharing" , 
     images: [
-      "/images/projects/robotics-1.png",
-      "/images/projects/robotics-2.jpeg",
-      "/images/projects/robotics-3.jpeg",
-      "/images/projects/robotics-4.png",
-      "/images/projects/robotics-5.png",
-      "/images/projects/robotics-6.jpeg",
+      "/images/projects/robotics-1.webp",
+      "/images/projects/robotics-2.webp",
+      "/images/projects/robotics-3.webp",
+      "/images/projects/robotics-4.webp",
+      "/images/projects/robotics-5.webp",
+      "/images/projects/robotics-6.webp",
     ]
   },
   {
@@ -40,12 +40,12 @@ export const projects = [
     category: "AI / Computer Vision",
     popupDesc: "A real-time trash detection system built with YOLOv11 architecture that classifies different types of waste materials. The model achieves 85.12% mAP accuracy and can process video feeds in real-time for automated waste sorting applications.",
     images: [
-      "/images/projects/trash-1.png",
-      "/images/projects/trash-2.png",
-      "/images/projects/trash-3.jpg",
-      "/images/projects/trash-4.png",
-      "/images/projects/trash-5.png",
-      "/images/projects/trash-6.png",
+      "/images/projects/trash-1.webp",
+      "/images/projects/trash-2.webp",
+      "/images/projects/trash-3.webp",
+      "/images/projects/trash-4.webp",
+      "/images/projects/trash-5.webp",
+      "/images/projects/trash-6.webp",
     ]
   },
   {
@@ -57,9 +57,9 @@ export const projects = [
     popupDesc: "An intelligent chatbot leveraging Retrieval-Augmented Generation (RAG) with Llama 3 and Groq API. It retrieves relevant document context using FAISS vector search to provide accurate, context-aware responses.",
     github: "https://github.com/SapiOwO/AIUI",
     images: [
-      "/images/projects/chatbot-1.jpeg",
-      "/images/projects/chatbot-2.jpeg",
-      "/images/projects/chatbot-3.jpeg",
+      "/images/projects/chatbot-1.webp",
+      "/images/projects/chatbot-2.webp",
+      "/images/projects/chatbot-3.webp",
     ]
   },
   {
@@ -70,9 +70,9 @@ export const projects = [
     category: "AI / Education",
     popupDesc: "An AI-powered educational platform that provides personalized, adaptive learning paths tailored to individual user needs and progress. Focuses on integrating AI logic into digital curricula to automatically determine the next optimal learning steps for each user.",
     images: [
-      "/images/projects/elearning-1.png",
-      "/images/projects/elearning-2.png",
-      "/images/projects/elearning-3.png",
+      "/images/projects/elearning-1.webp",
+      "/images/projects/elearning-2.webp",
+      "/images/projects/elearning-3.webp",
     ]
   },
   /*{
@@ -97,9 +97,9 @@ export const projects = [
     popupDesc: "A professional web platform built for a local handicraft product company. This project involved a complete code rewrite to replace the old WordPress-based site. The primary focus was on improving site performance, page load speed, and scalability while maintaining a responsive and modern user experience.",
     link: "https://schoncraft.com",
     images: [
-      "/images/projects/schoncraft-1.png",
-      "/images/projects/schoncraft-2.png",
-      "/images/projects/schoncraft-3.png",
+      "/images/projects/schoncraft-1.webp",
+      "/images/projects/schoncraft-2.webp",
+      "/images/projects/schoncraft-3.webp",
     ]
   },
   {
@@ -110,9 +110,9 @@ export const projects = [
     category: "Web Development",
     popupDesc: "A full-stack image editing platform that integrates various AI-powered features to enhance user creativity. Built with a Microservices architecture to separate core application functions, ensuring system stability and ease of future development.",
     images: [
-      "/images/projects/designanything-1.png",
-      "/images/projects/designanything-2.png",
-      "/images/projects/designanything-3.png",
+      "/images/projects/designanything-1.webp",
+      "/images/projects/designanything-2.webp",
+      "/images/projects/designanything-3.webp",
     ]
   },
   {
@@ -124,10 +124,10 @@ export const projects = [
     popupDesc: "A cross-platform mobile application developed as a final project for the Wireless Mobile Programming course. Focused on building a responsive user interface and implementing modern mobile application functionalities.",
     link: "https://meetandfight.vercel.app",
     images: [
-      "/images/projects/meetfight-1.jpg",
-      "/images/projects/meetfight-2.png",
-      "/images/projects/meetfight-3.jpg",
-      "/images/projects/meetfight-4.jpg",
+      "/images/projects/meetfight-1.webp",
+      "/images/projects/meetfight-2.webp",
+      "/images/projects/meetfight-3.webp",
+      "/images/projects/meetfight-4.webp",
     ]
   },
   {
@@ -152,10 +152,10 @@ export const projects = [
     popupDesc: "Trapped at night in an abandoned industrial factory controlled by a hostile presence, players must scavenge for components to manually repair the security system and unlock the main gate to escape. Features a fully playable 3D level implementing the 'Collect → Activate → Unlock' gameplay loop, utilizing Server/Client-side Lua scripts and a minimum of 10 custom 3D assets created in Blender.",
     link: "http://roblox.com/id/games/101945798277987/Final-Project",
     images: [
-      "/images/projects/roblox-1.png",
-      "/images/projects/roblox-2.png",
-      "/images/projects/roblox-3.png",
-      "/images/projects/roblox-4.jpeg",
+      "/images/projects/roblox-1.webp",
+      "/images/projects/roblox-2.webp",
+      "/images/projects/roblox-3.webp",
+      "/images/projects/roblox-4.webp",
     ]
   }
 ];
