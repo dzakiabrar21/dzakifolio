@@ -45,7 +45,7 @@ export default function Hero() {
       {/* Key Metrics Grid — Glassmorphism Stats Bar */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-8 animate-fade-up delay-500">
         <StatCard value="10+" label="Projects Built" />
-        <StatCard value="4" label="Tech Internships" />
+        <StatCard value="3" label="Tech Internships" />
         <StatCard value="85%" label="AI mAP Accuracy" />
         <StatCard value="90%+" label="Speed Optimized" />
       </div>
