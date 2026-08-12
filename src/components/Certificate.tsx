@@ -289,7 +289,7 @@ export default function Certificate() {
                     alt={cert.title}
                     loading="lazy"
                     decoding="async"
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-contain p-1.5 group-hover:scale-105 transition-transform duration-500"
                     // Fallback if image not found, using a gray background
                     onError={(e) => {
                       const target = e.target as HTMLImageElement;
