@@ -40,6 +40,5 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# local backup & scripts
+# local backup
 /public/images_backup/
-/scripts/
