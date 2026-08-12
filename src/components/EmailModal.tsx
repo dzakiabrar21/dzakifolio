@@ -42,11 +42,11 @@ export default function EmailModal({ isOpen, onClose, email }: EmailModalProps) 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fadeIn">
       <div 
-        className="bg-[#0A0A0A] border border-white/10 rounded-2xl w-full max-w-[320px] overflow-hidden shadow-2xl animate-scale-in"
+        className="bg-[#0A0A0A] border border-white/10 rounded-2xl w-full max-w-[380px] sm:max-w-[410px] overflow-hidden shadow-2xl animate-scale-in"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="flex items-center justify-between p-3 border-b border-white/5">
+        <div className="flex items-center justify-between p-3.5 border-b border-white/5">
           <h3 className="text-white text-sm font-semibold flex items-center gap-2">
             <Mail size={16} className="text-emerald-500" />
             Contact via Email
@@ -64,11 +64,11 @@ export default function EmailModal({ isOpen, onClose, email }: EmailModalProps) 
           {/* Email Display & Copy */}
           <div className="space-y-1.5">
             <p className="text-white/40 text-[10px] uppercase tracking-wider font-medium">Email Address</p>
-            <div className="flex items-center gap-2 p-2.5 bg-white/[0.03] border border-white/10 rounded-xl group">
-              <span className="text-white/80 text-[13px] truncate flex-1 font-mono">{email}</span>
+            <div className="flex items-center justify-between gap-2 p-3 bg-white/[0.03] border border-white/10 rounded-xl group">
+              <span className="text-white/90 text-[13px] sm:text-[14px] font-Inter select-all">{email}</span>
               <button 
                 onClick={copyToClipboard}
-                className="p-1.5 hover:bg-white/5 rounded-lg transition-all text-white/40 hover:text-emerald-500"
+                className="p-1.5 hover:bg-white/5 rounded-lg transition-all text-white/40 hover:text-emerald-500 flex-shrink-0"
                 title="Copy to clipboard"
               >
                 {copied ? <Check size={16} /> : <Copy size={16} />}
