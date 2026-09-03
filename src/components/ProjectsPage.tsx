@@ -1,276 +1,125 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import Link from "next/link";
 import { projects } from "@/data/projects";
-import { X, ChevronLeft, ChevronRight, ExternalLink, ArrowRight } from "lucide-react";
+import { ExternalLink, ArrowRight, Github, PlayCircle } from "lucide-react";
 
 export default function ProjectsPage() {
-  const [selectedProject, setSelectedProject] = useState<number | null>(null);
-  const [currentSlide, setCurrentSlide] = useState(0);
-
-  const openModal = (index: number) => {
-    setSelectedProject(index);
-    setCurrentSlide(0);
-  };
-
-  const closeModal = () => {
-    setSelectedProject(null);
-    setCurrentSlide(0);
-  };
-
-  const nextSlide = useCallback(() => {
-    if (selectedProject !== null) {
-      const total = projects[selectedProject].images.length;
-      setCurrentSlide((prev) => (prev + 1) % total);
-    }
-  }, [selectedProject]);
-
-  const prevSlide = useCallback(() => {
-    if (selectedProject !== null) {
-      const total = projects[selectedProject].images.length;
-      setCurrentSlide((prev) => (prev - 1 + total) % total);
-    }
-  }, [selectedProject]);
-
-  // Auto-slide every 4 seconds & handle Keyboard navigation
-  useEffect(() => {
-    if (selectedProject === null) return;
-    document.body.style.overflow = "hidden";
-
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") closeModal();
-      if (e.key === "ArrowRight") nextSlide();
-      if (e.key === "ArrowLeft") prevSlide();
-    };
-    window.addEventListener("keydown", handleKeyDown);
-
-    const interval = setInterval(() => {
-      nextSlide();
-    }, 4000);
-
-    return () => {
-      clearInterval(interval);
-      window.removeEventListener("keydown", handleKeyDown);
-      document.body.style.overflow = "unset";
-    };
-  }, [selectedProject, currentSlide, nextSlide, prevSlide]);
-
   return (
     <section id="projects" className="w-full pt-8 md:pt-32 pb-20 flex flex-col items-center min-h-screen">
       <div className="w-full max-w-[1200px] px-0 flex flex-col items-center">
         {/* Section Title */}
-        <h2 className="text-white text-[26px] md:text-[32px] font-bold leading-tight font-Inter tracking-tight mb-10 text-center">
-          Project – Muhammad Dzaki Abrar
+        <h2 className="text-white text-[32px] md:text-[40px] font-bold leading-tight font-Inter tracking-tight mb-12 text-center">
+          Project & Case Studies
         </h2>
 
         {/* Projects List — 2 column grid */}
         <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12">
-          {projects.map((project, index) => (
+          {projects.map((project) => (
             <div
-              key={project.title}
-              className="w-full flex flex-col gap-4 animate-fadeIn"
+              key={project.slug}
+              className="w-full flex flex-col gap-4 group"
             >
-              {/* Hero Image */}
-              <div
-                className="w-full rounded-2xl overflow-hidden border border-white/10 bg-[#0D0D0D] cursor-pointer relative group"
-                onClick={() => openModal(index)}
-                style={{ aspectRatio: '16/9' }}
+              {/* Hero Image / Card Container */}
+              <Link
+                href={`/projects/${project.slug}`}
+                className="w-full rounded-2xl overflow-hidden border border-white/10 bg-[#0D0D0D] block cursor-pointer transition-all duration-300 hover:border-white/30 hover:shadow-[0_0_25px_rgba(255,255,255,0.05)]"
+                style={{ aspectRatio: "16/9" }}
               >
                 <img
                   src={project.images[0]}
                   alt={project.title}
                   loading="lazy"
                   decoding="async"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  className="w-full h-full object-contain p-2 group-hover:scale-[1.03] transition-transform duration-500"
                 />
+              </Link>
 
-              </div>
+              {/* Content Below Image */}
+              <div className="w-full flex flex-col gap-2.5 px-1">
+                {/* Title */}
+                <Link
+                  href={`/projects/${project.slug}`}
+                  className="transition-colors"
+                >
+                  <h2 className="text-white text-lg md:text-xl font-bold leading-snug font-Inter group-hover:text-white/80 transition-colors">
+                    {project.title}
+                  </h2>
+                </Link>
 
-              {/* Content Below Image — Stacked layout for 2-column grid */}
-              <div className="w-full flex flex-col gap-2 px-1">
-                <h3 className="text-white text-[18px] md:text-[20px] font-bold leading-tight font-Inter">
-                  {project.title}
-                </h3>
-                <p className="text-white/60 text-[13px] md:text-[14px] font-normal leading-relaxed font-Inter line-clamp-2">
-                  {project.popupDesc}
+                {/* Description */}
+                <p className="text-white/60 text-xs sm:text-sm font-normal leading-relaxed font-Inter line-clamp-2">
+                  {project.tagline || project.popupDesc || project.desc}
                 </p>
 
-                {/* Actions */}
-                <div className="flex items-center gap-6 pt-2">
-                  <button
-                    onClick={() => openModal(index)}
-                    className="inline-flex items-center gap-2 text-white hover:text-white/70 text-[13px] font-medium font-Inter transition-colors cursor-pointer"
-                  >
-                    Read case study
-                    <ArrowRight size={14} />
-                  </button>
-
-                  {(project as any).link && (
-                    <a
-                      href={(project as any).link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-white/50 hover:text-white text-[13px] font-medium font-Inter transition-colors"
+                {/* Tech Tags */}
+                <div className="flex flex-wrap gap-1.5 pt-1">
+                  {project.tags.slice(0, 4).map((tag) => (
+                    <span
+                      key={tag}
+                      className="px-2.5 py-0.5 rounded-md text-[11px] font-mono bg-white/[0.04] border border-white/[0.08] text-white/50"
                     >
-                      View project
-                      <ExternalLink size={13} />
-                    </a>
+                      {tag}
+                    </span>
+                  ))}
+                  {project.tags.length > 4 && (
+                    <span className="px-2 py-0.5 rounded-md text-[11px] font-mono bg-white/[0.02] border border-white/[0.05] text-white/30">
+                      +{project.tags.length - 4}
+                    </span>
                   )}
+                </div>
+
+                {/* Actions Bar */}
+                <div className="flex items-center justify-between pt-3 border-t border-white/5 mt-1">
+                  <Link
+                    href={`/projects/${project.slug}`}
+                    className="inline-flex items-center gap-1.5 text-white/80 group-hover:text-white text-xs sm:text-sm font-semibold font-Inter transition-colors"
+                  >
+                    <span>Read case study</span>
+                    <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                  </Link>
+
+                  <div className="flex items-center gap-3">
+                    {project.github && (
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-1.5 text-white/50 hover:text-white transition-colors"
+                        title="GitHub Repository"
+                      >
+                        <Github size={15} />
+                      </a>
+                    )}
+                    {project.demo && (
+                      <a
+                        href={project.demo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-1.5 text-blue-400/70 hover:text-blue-400 transition-colors"
+                        title="Watch Demo"
+                      >
+                        <PlayCircle size={15} />
+                      </a>
+                    )}
+                    {project.link && (
+                      <a
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-1.5 text-white/50 hover:text-white transition-colors"
+                        title="Live Project"
+                      >
+                        <ExternalLink size={15} />
+                      </a>
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
           ))}
         </div>
       </div>
-
-      {/* ===== POPUP MODAL ===== */}
-      {selectedProject !== null && (
-        <div
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 backdrop-blur-sm p-4 md:p-0"
-          onClick={closeModal}
-        >
-          <div
-            className="relative bg-[#18181B] rounded-2xl overflow-hidden border border-white/10 w-[100vw] md:w-[90vw] max-w-[1100px] max-h-[90vh] md:max-h-[85vh] shadow-2xl animate-fadeIn flex flex-col md:flex-row overflow-y-auto md:overflow-y-hidden"
-            onClick={(e) => e.stopPropagation()}
-          >
-            {/* Close Button */}
-            <button
-              onClick={closeModal}
-              className="absolute top-4 right-4 z-10 w-9 h-9 bg-black/50 hover:bg-black/80 rounded-full flex items-center justify-center border border-white/10 transition-all"
-            >
-              <X size={18} className="text-white" />
-            </button>
-
-            {/* LEFT SIDE — Image Slider */}
-            <div className="relative w-full md:w-[60%] h-[250px] md:h-auto bg-zinc-900 overflow-hidden flex-shrink-0">
-              <div
-                className="flex h-full transition-transform duration-700 ease-in-out"
-                style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-              >
-                {projects[selectedProject].images.map((img, i) => (
-                  <img
-                    key={i}
-                    src={img}
-                    alt={`${projects[selectedProject].title} - Slide ${i + 1}`}
-                    className="min-w-full h-full object-contain flex-shrink-0"
-                  />
-                ))}
-              </div>
-
-              {/* Left Arrow */}
-              <button
-                onClick={prevSlide}
-                className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/50 hover:bg-black/80 rounded-full flex items-center justify-center border border-white/10 transition-all"
-              >
-                <ChevronLeft size={22} className="text-white" />
-              </button>
-
-              {/* Right Arrow */}
-              <button
-                onClick={nextSlide}
-                className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/50 hover:bg-black/80 rounded-full flex items-center justify-center border border-white/10 transition-all"
-              >
-                <ChevronRight size={22} className="text-white" />
-              </button>
-
-              {/* Slide Dots */}
-              <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2">
-                {projects[selectedProject].images.map((_, i) => (
-                  <button
-                    key={i}
-                    onClick={() => setCurrentSlide(i)}
-                    className={`w-2.5 h-2.5 rounded-full transition-all ${
-                      i === currentSlide
-                        ? "bg-white scale-110"
-                        : "bg-white/30 hover:bg-white/50"
-                    }`}
-                  />
-                ))}
-              </div>
-            </div>
-
-            {/* RIGHT SIDE — Project Details */}
-            <div className="w-full md:w-[40%] p-6 md:p-8 space-y-4 md:space-y-5 md:overflow-y-auto flex-shrink-0">
-              {/* Title */}
-              <h3 className="text-white text-[22px] md:text-[26px] font-bold leading-tight font-Inter">
-                {projects[selectedProject].title}
-              </h3>
-
-              {/* Category Badge */}
-              <span className="inline-block bg-white/10 border border-white/20 text-white/80 text-[12px] font-semibold px-4 py-1.5 rounded-full">
-                {projects[selectedProject].category}
-              </span>
-
-              {/* Description Label + Text */}
-              <div className="space-y-3">
-                <h4 className="text-white text-[15px] font-semibold font-Inter">
-                  Project Overview
-                </h4>
-                <p className="text-white/60 text-[14px] leading-relaxed font-Inter">
-                  {projects[selectedProject].popupDesc}
-                </p>
-                {(projects[selectedProject] as any).link && (
-                  <a
-                    href={(projects[selectedProject] as any).link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-emerald-400 hover:text-emerald-300 text-[14px] font-medium font-Inter transition-colors w-fit border border-emerald-500/30 bg-emerald-500/10 px-4 py-2 rounded-lg mt-2"
-                  >
-                    {(projects[selectedProject] as any).link.includes("roblox.com") 
-                      ? "Play Game on Roblox" 
-                      : "Visit Website"}
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="ml-1">
-                      <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  </a>
-                )}
-                <div className="flex flex-wrap gap-2 mt-2">
-                  {(projects[selectedProject] as any).github && (
-                    <a
-                      href={(projects[selectedProject] as any).github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 text-white/70 hover:text-white text-[14px] font-medium font-Inter transition-colors w-fit border border-white/20 bg-white/5 px-4 py-2 rounded-lg"
-                    >
-                      GitHub
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="ml-1">
-                        <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                    </a>
-                  )}
-                  {(projects[selectedProject] as any).demo && (
-                    <a
-                      href={(projects[selectedProject] as any).demo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 text-blue-400 hover:text-blue-300 text-[14px] font-medium font-Inter transition-colors w-fit border border-blue-500/30 bg-blue-500/10 px-4 py-2 rounded-lg"
-                    >
-                      Watch Demo
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="ml-1">
-                        <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                    </a>
-                  )}
-                </div>
-              </div>
-
-              {/* Tags */}
-              <div className="flex flex-wrap gap-2 pt-2">
-                {projects[selectedProject].tags.map((tag) => (
-                  <div
-                    key={tag}
-                    className="bg-white/5 rounded-full px-3 py-1 border border-white/10"
-                  >
-                    <span className="text-white/50 text-[12px] font-medium font-JetBrainsMono uppercase tracking-wider">
-                      {tag}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
     </section>
   );
 }
