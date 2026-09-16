@@ -52,7 +52,7 @@ export const experiences: Experience[] = [
    {
     company: "PT Bank Mandiri Tbk x Rakamin Academy",
     role: "Project-Based Intern — Mobile Application Developer",
-    period: "May 2026 - Present",
+    period: "May 2026 - July 2026",
     category: "professional",
     points: [
       "Engages in a project-based internship to develop a scalable mobile application within a simulated banking environment, focusing on delivering high-quality user experiences.",
