@@ -14,6 +14,21 @@ export const experiences: Experience[] = [
 
   // ── Professional Experience ──
   {
+    company: "PT Century Batteries Indonesia",
+    role: "Fullstack Developer Intern",
+    period: "Aug 2026 - Present",
+    category: "professional",
+    points: [
+      "Enterprise Workflow Digitalization: Built internal web modules to digitize manufacturing operations and cut manual paperwork.",
+      "Data Integration & Inventory Tracking: Connected database pipelines with automated reporting for real-time spare part and inventory visibility.",
+      "API Architecture & Optimization: Built RESTful endpoints and optimized queries for low-latency frontend-backend communication.",
+      "System Stability & Code Maintenance: Handled troubleshooting, edge-case debugging, and UI refinements to sustain high uptime in production."
+    ],
+    color: "#DC2626",
+    logo: "/images/experience/logo-century.webp",
+  },
+
+  {
     company: "PT. Omron Manufacturing Indonesia",
     role: "IT Developer Intern — Quality Assurance DMS",
     period: "May 2025 – Aug 2025",
