@@ -55,21 +55,26 @@ export default function Experience() {
                       >
                         <div className="flex items-center gap-4 md:gap-5 text-left">
                           {/* Organization Logo */}
-                          {exp.logo && (
-                            <div className="w-12 h-12 md:w-14 md:h-14 flex-shrink-0 rounded-2xl overflow-hidden bg-[#1A1A1A] border border-white/[0.08] flex items-center justify-center">
-                              <img 
-                                src={exp.logo} 
-                                alt={`${exp.company} logo`}
-                                loading="lazy"
-                                decoding="async"
-                                className="w-full h-full object-contain"
-                                onError={(e) => {
-                                  const target = e.target as HTMLImageElement;
-                                  target.src = `https://via.placeholder.com/150/1A1A1A/FFFFFF?text=${encodeURIComponent(exp.company.charAt(0))}`;
-                                }}
-                              />
-                            </div>
-                          )}
+                          {exp.logo && (() => {
+                            const isCbi = exp.company.toLowerCase().includes("century") || exp.company.toLowerCase().includes("cbi");
+                            return (
+                              <div className={`w-12 h-12 md:w-14 md:h-14 flex-shrink-0 overflow-hidden bg-[#1A1A1A] border border-white/[0.08] flex items-center justify-center ${
+                                isCbi ? 'rounded-2xl' : 'rounded-full'
+                              }`}>
+                                <img 
+                                  src={exp.logo} 
+                                  alt={`${exp.company} logo`}
+                                  loading="lazy"
+                                  decoding="async"
+                                  className={`w-full h-full ${isCbi ? 'object-contain' : 'object-cover'}`}
+                                  onError={(e) => {
+                                    const target = e.target as HTMLImageElement;
+                                    target.src = `https://via.placeholder.com/150/1A1A1A/FFFFFF?text=${encodeURIComponent(exp.company.charAt(0))}`;
+                                  }}
+                                />
+                              </div>
+                            );
+                          })()}
 
                           {/* Experience Details */}
                           <div className="flex flex-col items-start gap-1">
