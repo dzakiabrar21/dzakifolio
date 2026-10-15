@@ -57,16 +57,31 @@ export default function Experience() {
                           {/* Organization Logo */}
                           {exp.logo && (() => {
                             const isCbi = exp.company.toLowerCase().includes("century") || exp.company.toLowerCase().includes("cbi");
+                            if (isCbi) {
+                              return (
+                                <div className="w-12 h-12 md:w-14 md:h-14 flex-shrink-0 flex items-center justify-center">
+                                  <img 
+                                    src={exp.logo} 
+                                    alt={`${exp.company} logo`}
+                                    loading="lazy"
+                                    decoding="async"
+                                    className="w-full h-full object-contain scale-110 drop-shadow-md"
+                                    onError={(e) => {
+                                      const target = e.target as HTMLImageElement;
+                                      target.src = `https://via.placeholder.com/150/1A1A1A/FFFFFF?text=${encodeURIComponent(exp.company.charAt(0))}`;
+                                    }}
+                                  />
+                                </div>
+                              );
+                            }
                             return (
-                              <div className={`w-12 h-12 md:w-14 md:h-14 flex-shrink-0 overflow-hidden bg-[#1A1A1A] border border-white/[0.08] flex items-center justify-center ${
-                                isCbi ? 'rounded-2xl' : 'rounded-full'
-                              }`}>
+                              <div className="w-12 h-12 md:w-14 md:h-14 flex-shrink-0 rounded-full overflow-hidden bg-[#1A1A1A] border border-white/[0.08] flex items-center justify-center">
                                 <img 
                                   src={exp.logo} 
                                   alt={`${exp.company} logo`}
                                   loading="lazy"
                                   decoding="async"
-                                  className={`w-full h-full ${isCbi ? 'object-contain' : 'object-cover'}`}
+                                  className="w-full h-full object-cover"
                                   onError={(e) => {
                                     const target = e.target as HTMLImageElement;
                                     target.src = `https://via.placeholder.com/150/1A1A1A/FFFFFF?text=${encodeURIComponent(exp.company.charAt(0))}`;
