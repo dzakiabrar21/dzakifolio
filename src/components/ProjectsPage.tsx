@@ -92,15 +92,24 @@ export default function ProjectsPage() {
                       </a>
                     )}
                     {project.demo && (
-                      <a
-                        href={project.demo}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="p-1.5 text-blue-400/70 hover:text-blue-400 transition-colors"
-                        title="Watch Demo"
-                      >
-                        <PlayCircle size={15} />
-                      </a>
+                      project.demoDisabled ? (
+                        <span
+                          className="p-1.5 text-white/20 cursor-not-allowed"
+                          title="Demo currently unavailable"
+                        >
+                          <PlayCircle size={15} />
+                        </span>
+                      ) : (
+                        <a
+                          href={project.demo}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="p-1.5 text-blue-400/70 hover:text-blue-400 transition-colors"
+                          title="Watch Demo"
+                        >
+                          <PlayCircle size={15} />
+                        </a>
+                      )
                     )}
                     {project.link && (
                       <a

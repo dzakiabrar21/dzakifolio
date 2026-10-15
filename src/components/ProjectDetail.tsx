@@ -73,15 +73,25 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
           )}
 
           {project.demo && (
-            <a
-              href={project.demo}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-blue-500/10 hover:bg-blue-500/20 border border-blue-500/30 text-blue-400 hover:text-blue-300 text-xs font-medium transition-all"
-            >
-              <PlayCircle size={14} />
-              <span className="hidden sm:inline">Watch Demo</span>
-            </a>
+            project.demoDisabled ? (
+              <span
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/5 border border-white/10 text-white/30 text-xs font-medium cursor-not-allowed select-none"
+                title="Demo currently unavailable"
+              >
+                <PlayCircle size={14} className="opacity-50" />
+                <span className="hidden sm:inline">Watch Demo</span>
+              </span>
+            ) : (
+              <a
+                href={project.demo}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-blue-500/10 hover:bg-blue-500/20 border border-blue-500/30 text-blue-400 hover:text-blue-300 text-xs font-medium transition-all"
+              >
+                <PlayCircle size={14} />
+                <span className="hidden sm:inline">Watch Demo</span>
+              </a>
+            )
           )}
 
           {project.link && (
