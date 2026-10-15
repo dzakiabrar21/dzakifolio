@@ -25,7 +25,7 @@ export const experiences: Experience[] = [
       "System Stability & Code Maintenance: Handled troubleshooting, edge-case debugging, and UI refinements to sustain high uptime in production."
     ],
     color: "#DC2626",
-    logo: "/images/experience/logo-century.webp",
+    logo: "/images/experience/logo_cbi.webp",
   },
 
   {
