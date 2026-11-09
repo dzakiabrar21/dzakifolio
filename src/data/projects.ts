@@ -27,6 +27,8 @@ export interface ProjectItem {
   github?: string;
   demo?: string;
   demoDisabled?: boolean;
+  /** Optional brand color (hex) used to theme the project detail page. */
+  accent?: string;
   images: string[];
   tagline?: string;
   overview?: string;
@@ -45,6 +47,9 @@ export const projects: ProjectItem[] = [
     tags: ["Flutter", "SQLite", "Gemini API"],
     accuracy: "Offline-first",
     category: "Mobile Development / AI",
+    accent: "#24B9B4",
+    link: "https://stash-up-landing.vercel.app/",
+    github: "https://github.com/dzakiabrar21/Stash-up",
     popupDesc: "Stash is an offline-first expense tracker for Android built with Flutter and a local SQLite database. Receipts can be scanned and transactions can be recorded by voice using the Gemini API (optional, with the user's own API key). It supports multiple wallets and transfers, a calculator-style keypad, category analytics with donut charts and a 6-month trend, and CSV export — with no account, ads, or trackers.",
     images: [
       "/images/projects/stash-1.png",
@@ -83,6 +88,7 @@ export const projects: ProjectItem[] = [
   },
   {
     slug: "level-up",
+    accent: "#a78bfa",
     title: "Level Up – AI Developer & UI/UX",
     desc: "Adaptive digital education platform that transforms traditional curricula into an interactive video-game structure with personalized AI-driven learning paths.",
     tags: ["Next.js", "React 19", "Tailwind CSS", "Appwrite"],
@@ -119,6 +125,7 @@ export const projects: ProjectItem[] = [
   },
   {
     slug: "smart-factory-sorting",
+    accent: "#f59e0b",
     title: "Autonomous Shape Sorting System (Smart Factory)",
     desc: "Prototipe otomasi industri yang mengintegrasikan Computer Vision (AI) dan IoT untuk mengklasifikasikan serta menyortir objek geometris secara otomatis di atas sabuk konveyor.",
     tags: ["YOLOv11", "ESP32", "React", "FastAPI"],
@@ -159,6 +166,7 @@ export const projects: ProjectItem[] = [
   },
   {
     slug: "realtime-trash-detection",
+    accent: "#34d399",
     title: "Real-time Trash Detection",
     desc: "An advanced object detection system using YOLOv11 architecture for real-time waste classification.",
     tags: ["YOLOv11", "PyTorch", "AI"],
@@ -194,6 +202,7 @@ export const projects: ProjectItem[] = [
   },
   {
     slug: "nlp-hybrid-chatbot",
+    accent: "#60a5fa",
     title: "NLP Hybrid Chatbot (RAG)",
     desc: "An intelligent chatbot leveraging Retrieval-Augmented Generation to deliver context-aware answers from documents.",
     tags: ["Llama 3", "Groq API", "FAISS"],
@@ -227,6 +236,7 @@ export const projects: ProjectItem[] = [
   },
   {
     slug: "ai-roadmap-elearning",
+    accent: "#f472b6",
     title: "AI Roadmap Adaptive E-Learning",
     desc: "An AI-powered educational platform that provides personalized, adaptive learning paths tailored to individual user needs.",
     tags: ["AI Logic", "Figma", "UI/UX"],
@@ -258,6 +268,7 @@ export const projects: ProjectItem[] = [
   },
   {
     slug: "schoncraft",
+    accent: "#d6a56a",
     title: "PT. Schon Craft Indonesia",
     desc: "A professional web platform for a local handicraft company, fully rewritten from WordPress to a modern architecture.",
     tags: ["Next.js", "React", "Tailwind CSS", "Figma"],
@@ -291,6 +302,7 @@ export const projects: ProjectItem[] = [
   },
   {
     slug: "design-anything",
+    accent: "#fb7185",
     title: "Design Anything",
     desc: "A full-stack image editing platform integrating various AI-powered features with a Microservices architecture.",
     tags: ["Microservices", "AI Features", "JavaScript"],
@@ -322,6 +334,7 @@ export const projects: ProjectItem[] = [
   },
   {
     slug: "meet-and-fight",
+    accent: "#38bdf8",
     title: "Meet and Fight",
     desc: "A cross-platform mobile application developed as a final project for the Wireless Mobile Programming course.",
     tags: ["Flutter", "Dart", "Mobile"],
@@ -355,6 +368,7 @@ export const projects: ProjectItem[] = [
   },
   {
     slug: "student-management-system",
+    accent: "#fbbf24",
     title: "Student Management System",
     desc: "A desktop application for systematic student data management (CRUD) built with Object-Oriented Programming principles.",
     tags: ["Java Swing", "MySQL", "OOP"],
@@ -386,6 +400,7 @@ export const projects: ProjectItem[] = [
   },
   {
     slug: "industrial-escape",
+    accent: "#f97316",
     title: "Industrial Escape: The Abandoned Factory",
     desc: "A fully immersive 3D Roblox puzzle-escape game requiring players to collect components to repair security systems.",
     tags: ["Roblox Studio", "Lua", "Blender 3D"],
