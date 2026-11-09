@@ -39,6 +39,49 @@ export interface ProjectItem {
 
 export const projects: ProjectItem[] = [
   {
+    slug: "stash-expense-tracker",
+    title: "Stash – Expense Tracker App",
+    desc: "Offline-first Android expense tracker built with Flutter, featuring receipt scanning and voice entry powered by Gemini AI.",
+    tags: ["Flutter", "SQLite", "Gemini API"],
+    accuracy: "Offline-first",
+    category: "Mobile Development / AI",
+    popupDesc: "Stash is an offline-first expense tracker for Android built with Flutter and a local SQLite database. Receipts can be scanned and transactions can be recorded by voice using the Gemini API (optional, with the user's own API key). It supports multiple wallets and transfers, a calculator-style keypad, category analytics with donut charts and a 6-month trend, and CSV export — with no account, ads, or trackers.",
+    images: [
+      "/images/projects/stash-1.png",
+      "/images/projects/stash-2.png",
+      "/images/projects/stash-3.png",
+      "/images/projects/stash-4.png",
+      "/images/projects/stash-5.png",
+      "/images/projects/stash-6.png",
+      "/images/projects/stash-7.png",
+    ],
+    tagline: "Private, offline-first money tracking with Gemini AI receipt scanning and voice entry",
+    overview: "Stash is a personal finance app that keeps all data on the device. Users record expenses, income, and transfers across multiple wallets (BCA, Mandiri, Bank Jago, GoPay, OVO, or cash), and see where their money goes through category analytics. Gemini AI can fill in a transaction from a receipt photo or a spoken sentence, which the user reviews before saving.",
+    introduction: "Most expense trackers require accounts, cloud sync, and ads, and manual entry is tedious enough that people stop logging. Stash is built to remove both problems: everything lives in a local SQLite database for privacy and offline use, while optional AI-assisted input (receipt scan and voice) makes logging a transaction take a few seconds.",
+    toolsTechnologies: [
+      { name: "Flutter & Dart", category: "Mobile Framework", description: "Single codebase for the Android app with a custom design system." },
+      { name: "SQLite (sqflite)", category: "Local Database", description: "On-device storage with SQL aggregation for wallet balances and reports." },
+      { name: "Provider", category: "State Management", description: "Layered architecture: UI → State (Provider + AppState) → Repository → Database." },
+      { name: "Gemini API", category: "AI (Optional)", description: "Reads receipts and understands voice input; called only on demand with the user's own API key." },
+      { name: "fl_chart", category: "Data Visualization", description: "Donut chart per category and 6-month spending trend." },
+      { name: "record, image_picker, flutter_secure_storage", category: "Device Integration", description: "Voice recording, receipt capture/gallery picking, and secure API key storage." }
+    ],
+    keyFeatures: [
+      { title: "Receipt Scan with Gemini AI", desc: "Photograph a receipt and the final total, store name, date, and category are filled in automatically for review." },
+      { title: "Voice Entry", desc: "Say a transaction such as \"makan siang padang tiga puluh lima ribu pakai BCA\" and the amount, wallet, category, and date are understood." },
+      { title: "Multi-Wallet & Transfers", desc: "Balances are computed automatically, and transfers between wallets are not counted as expenses." },
+      { title: "Clear Analytics", desc: "Per-category donut chart, monthly income/expense summary, and a 6-month trend." },
+      { title: "Calculator Keypad & CSV Export", desc: "Fast amount input with + − × ÷ and a 000 key, plus export of the full history to CSV." },
+      { title: "Offline & Private", desc: "SQLite database on the phone — no account, no ads, no trackers." }
+    ],
+    results: [
+      { label: "Automated Tests", value: "28", desc: "Covering core logic" },
+      { label: "Connectivity", value: "100% Offline", desc: "AI features are optional" },
+      { label: "Platform", value: "Android 7.0+", desc: "Flutter release build" },
+      { label: "Release APK", value: "52.6 MB", desc: "Bundled Plus Jakarta Sans font" }
+    ]
+  },
+  {
     slug: "level-up",
     title: "Level Up – AI Developer & UI/UX",
     desc: "Adaptive digital education platform that transforms traditional curricula into an interactive video-game structure with personalized AI-driven learning paths.",
