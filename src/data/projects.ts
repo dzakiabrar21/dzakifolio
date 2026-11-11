@@ -41,6 +41,51 @@ export interface ProjectItem {
 
 export const projects: ProjectItem[] = [
   {
+    slug: "pocketpay-digital-wallet",
+    title: "PocketPay – Digital Wallet",
+    desc: "Android digital wallet prototype with QRIS payments, round-up savings, interest-bearing pockets, and bank-grade on-device security.",
+    tags: ["Kotlin", "Jetpack Compose", "Room + SQLCipher", "Hilt"],
+    accuracy: "Android Prototype",
+    category: "Mobile Development / FinTech",
+    accent: "#84cc16",
+    link: "https://pocket-pay-beryl.vercel.app/",
+    github: "https://github.com/dzakiabrar21/PocketPay",
+    popupDesc: "PocketPay is a native Android digital wallet prototype built with Kotlin, Jetpack Compose, and Clean Architecture (MVI). It supports QRIS scan and receive, cascading payment routing across pockets, round-up micro-savings, interest-bearing savings pockets, digital receipts with refunds, PDF e-statements, and a security layer made of a hashed PIN, crypto-bound biometrics, and an SQLCipher-encrypted database. Money is simulated and there is no backend.",
+    images: [
+      "/images/projects/pocketpay-1.png",
+      "/images/projects/pocketpay-2.png",
+      "/images/projects/pocketpay-3.png",
+      "/images/projects/pocketpay-4.png",
+      "/images/projects/pocketpay-5.png",
+      "/images/projects/pocketpay-6.png",
+    ],
+    tagline: "A digital wallet with round-up savings and security that is locked by default",
+    overview: "PocketPay is a native Android wallet prototype that explores how a modern fintech app handles payments, savings, and security entirely on-device. Users pay with QRIS, split money into pockets, and save automatically through round-ups, while every transaction is recorded with a shareable receipt and a PDF statement. Funds are simulated — it is a portfolio project, not a registered QRIS issuer.",
+    introduction: "Wallet apps handle money, so correctness and security matter more than visuals: a payment must never half-complete, a retry must never charge twice, and a stolen phone must not expose the data. PocketPay tackles these problems with atomic database transactions, idempotency keys, an encrypted database, and a layered PIN and biometric lock.",
+    toolsTechnologies: [
+      { name: "Kotlin & Jetpack Compose", category: "UI", description: "Material 3 interface with an emerald theme, light/dark modes, and Indonesian + English localization." },
+      { name: "Clean Architecture + MVI", category: "Architecture", description: "Unidirectional data flow with separate data, domain, and presentation layers." },
+      { name: "Room + SQLCipher", category: "Database", description: "AES-256 encrypted database; the passphrase is wrapped by an Android Keystore key." },
+      { name: "Dagger Hilt, Coroutines & Flow", category: "DI & Async", description: "Dependency injection and reactive state with StateFlow." },
+      { name: "CameraX & ML Kit", category: "QR Scanning", description: "Live camera and gallery scanning with QRIS parsing and CRC16 validation." },
+      { name: "Biometric API & Keystore", category: "Security", description: "BiometricPrompt with a CryptoObject, PBKDF2-hashed PIN, and FLAG_SECURE." }
+    ],
+    keyFeatures: [
+      { title: "QRIS Payments with Round-Up Savings", desc: "Pay by scanning a QRIS code; the amount rounds up to the next Rp 5,000 and the difference goes to the Spare Change Jar." },
+      { title: "Cascading Payment Routing", desc: "Choose any pocket as the source; if it falls short, the rest is drawn from the main account in one atomic transaction." },
+      { title: "Savings Pockets", desc: "Flexible pockets earn 3.5% p.a. and locked deposits earn 6% p.a., with goal progress and early withdrawal blocked until maturity." },
+      { title: "Locked by Default", desc: "6-digit PIN with weak PIN rejection, a 30-second lockout after 5 wrong tries, auto-lock after 60 seconds, and crypto-bound biometrics." },
+      { title: "Statistics", desc: "Weekly and monthly income vs. expense charts with recent expenses; refunds and internal moves are excluded." },
+      { title: "Receipts, Refunds & E-Statements", desc: "Shareable receipts, one refund per payment within 24 hours, idempotency keys against duplicates, and PDF statements." }
+    ],
+    results: [
+      { label: "Platform", value: "Android 8.0+", desc: "Native Kotlin, API 26" },
+      { label: "Encryption", value: "AES-256", desc: "SQLCipher + Keystore" },
+      { label: "Architecture", value: "Clean + MVI", desc: "Unidirectional data flow" },
+      { label: "Testing", value: "Robolectric", desc: "Unit and instrumented tests" }
+    ]
+  },
+  {
     slug: "stash-expense-tracker",
     title: "Stash – Expense Tracker App",
     desc: "Offline-first Android expense tracker built with Flutter, featuring receipt scanning and voice entry powered by Gemini AI.",
