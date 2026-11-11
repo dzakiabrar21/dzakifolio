@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Skills from "@/components/Skills";
 import Experience from "@/components/Experience";
+import FeaturedProjects from "@/components/FeaturedProjects";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import ProfileSidebar from "@/components/ProfileSidebar";
@@ -17,26 +18,32 @@ export default function Home() {
 
       <Navbar />
 
-      {/* Diperkecil max-width nya agar lebih ke tengah */}
+      {/* Profile + about content. The sticky sidebar ends with this block, so it
+          scrolls away before the full-width Projects section begins. */}
       <div className="max-w-[1150px] mx-auto px-6 md:px-12 pt-6 md:pt-24">
         <div className="flex flex-col md:flex-row gap-10 md:gap-16 relative">
-
           {/* LEFT SIDEBAR — 40% width, Fixed/Sticky */}
           <aside className="w-full md:w-[40%] flex-shrink-0 md:sticky md:top-24 md:h-fit pt-4 md:pt-8">
             <ProfileSidebar />
           </aside>
 
-          {/* RIGHT CONTENT — 60% width, Scrollable, ditambahkan padding kanan agar tidak mepet */}
-          <div className="w-full md:w-[60%] min-w-0 pt-4 md:pt-8 pb-28 md:pb-12 md:pr-8 lg:pr-12">
+          {/* RIGHT CONTENT — 60% width */}
+          <div className="w-full md:w-[60%] min-w-0 pt-4 md:pt-8 md:pr-8 lg:pr-12">
             <Hero />
             <Experience />
             <Skills />
-            <Contact />
           </div>
-
         </div>
       </div>
-      
+
+      {/* Full-width stacked projects */}
+      <FeaturedProjects />
+
+      {/* Same width as the footer so the two line up */}
+      <div className="max-w-[1428px] mx-auto px-6 md:px-[122px] pt-4 pb-20 md:pb-10">
+        <Contact />
+      </div>
+
       <Footer />
     </main>
   );

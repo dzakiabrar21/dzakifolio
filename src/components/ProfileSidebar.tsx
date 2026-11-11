@@ -8,6 +8,7 @@ const navSections = [
   { id: 'experience', label: 'Organization & Work Experience' },
   { id: 'project-event', label: 'Project Event' },
   { id: 'skills', label: 'Technical Skills' },
+  { id: 'featured-projects', label: 'Projects' },
   { id: 'contact', label: 'Contact' },
 ];
 
