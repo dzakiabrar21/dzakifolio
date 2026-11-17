@@ -182,7 +182,7 @@ export const projects: ProjectItem[] = [
     demoDisabled: true,
     images: [
       "/images/projects/robotics-1.webp",
-      "/images/projects/robotics-2.webp",
+      "/images/projects/robotics-2.jpg",
       "/images/projects/robotics-3.webp",
       "/images/projects/robotics-4.webp",
       "/images/projects/robotics-5.webp",
