@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment, useCallback, useEffect, useMemo, useState } from "react";
+import { Fragment, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { AnimatePresence, motion, useScroll, useSpring } from "framer-motion";
 import { ProjectItem, projects } from "@/data/projects";
@@ -103,10 +103,65 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
     (project.toolsTechnologies?.length ? 1 : 0) +
     (project.keyFeatures?.length ? 1 : 0);
 
+  // Hero slider is a native scroll-snap track: trackpad/touch swipes scroll it,
+  // mouse users can drag it, and the arrows just scroll it programmatically.
+  const trackRef = useRef<HTMLDivElement>(null);
+  const drag = useRef({ active: false, startX: 0, startScroll: 0, moved: false });
+
+  const scrollToImage = useCallback((i: number) => {
+    const el = trackRef.current;
+    if (el) el.scrollTo({ left: i * el.clientWidth, behavior: "smooth" });
+  }, []);
+
   const stepHero = useCallback(
-    (dir: 1 | -1) => setActiveImage((i) => (i + dir + images.length) % images.length),
-    [images.length]
+    (dir: 1 | -1) => scrollToImage((activeImage + dir + images.length) % images.length),
+    [activeImage, images.length, scrollToImage]
   );
+
+  const onTrackScroll = useCallback(() => {
+    const el = trackRef.current;
+    if (!el) return;
+    setActiveImage(Math.round(el.scrollLeft / el.clientWidth));
+  }, []);
+
+  const onTrackPointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (e.pointerType !== "mouse" || e.button !== 0 || !trackRef.current) return;
+    drag.current = { active: true, startX: e.clientX, startScroll: trackRef.current.scrollLeft, moved: false };
+  };
+  const onTrackPointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+    const el = trackRef.current;
+    const d = drag.current;
+    if (!d.active || !el) return;
+    const dx = e.clientX - d.startX;
+    if (!d.moved && Math.abs(dx) > 5) {
+      d.moved = true;
+      el.setPointerCapture(e.pointerId);
+      el.style.scrollSnapType = "none";
+      el.style.scrollBehavior = "auto";
+    }
+    if (d.moved) el.scrollLeft = d.startScroll - dx;
+  };
+  const onTrackPointerUp = () => {
+    const el = trackRef.current;
+    const d = drag.current;
+    if (!d.active || !el) return;
+    d.active = false;
+    if (!d.moved) return;
+    el.style.scrollSnapType = "";
+    el.style.scrollBehavior = "";
+    const dx = el.scrollLeft - d.startScroll;
+    const base = Math.round(d.startScroll / el.clientWidth);
+    const target = Math.abs(dx) > el.clientWidth * 0.15 ? base + Math.sign(dx) : base;
+    scrollToImage(Math.max(0, Math.min(images.length - 1, target)));
+  };
+  // A drag must not also count as a click that opens the lightbox.
+  const onTrackClickCapture = (e: React.MouseEvent) => {
+    if (drag.current.moved) {
+      e.stopPropagation();
+      e.preventDefault();
+      drag.current.moved = false;
+    }
+  };
   const stepLightbox = useCallback(
     (dir: 1 | -1) => setLightbox((i) => (i === null ? i : (i + dir + images.length) % images.length)),
     [images.length]
@@ -323,25 +378,35 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
           className="space-y-3"
         >
           <div className="relative rounded-2xl overflow-hidden border border-white/10 bg-[#0d0d0f] group">
-            <AnimatePresence mode="wait">
-              <motion.button
-                key={activeImage}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.2 }}
-                onClick={() => setLightbox(activeImage)}
-                className="block w-full cursor-zoom-in"
-                aria-label="Open image full screen"
-              >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={images[activeImage]}
-                  alt={`${project.title} screenshot ${activeImage + 1}`}
-                  className="w-full h-auto max-h-[65vh] object-contain mx-auto"
-                />
-              </motion.button>
-            </AnimatePresence>
+            <div
+              ref={trackRef}
+              onScroll={onTrackScroll}
+              onPointerDown={onTrackPointerDown}
+              onPointerMove={onTrackPointerMove}
+              onPointerUp={onTrackPointerUp}
+              onPointerCancel={onTrackPointerUp}
+              onClickCapture={onTrackClickCapture}
+              onDragStart={(e) => e.preventDefault()}
+              className="flex overflow-x-auto snap-x snap-mandatory scroll-smooth overscroll-x-contain select-none [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+            >
+              {images.map((img, i) => (
+                <button
+                  key={img}
+                  onClick={() => setLightbox(i)}
+                  className="w-full shrink-0 snap-center flex items-center justify-center cursor-zoom-in"
+                  aria-label={`Open image ${i + 1} full screen`}
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={img}
+                    alt={`${project.title} screenshot ${i + 1}`}
+                    loading={i === 0 ? "eager" : "lazy"}
+                    draggable={false}
+                    className="w-full h-auto max-h-[65vh] object-contain mx-auto"
+                  />
+                </button>
+              ))}
+            </div>
 
             {images.length > 1 && (
               <>
