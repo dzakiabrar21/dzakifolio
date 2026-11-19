@@ -41,6 +41,97 @@ export interface ProjectItem {
 
 export const projects: ProjectItem[] = [
   {
+    slug: "q-ledger",
+    title: "Q-Ledger – Outgoing QA System",
+    desc: "Web system for outgoing quality assurance on an electronics assembly line, replacing paper logbooks with quality rules enforced by the server.",
+    tags: ["C#", "ASP.NET Core 8", "EF Core", "SQL Server", "SignalR"],
+    accuracy: "Manufacturing QA System",
+    category: "Web Development / Quality Assurance",
+    accent: "#3b82f6",
+    github: "https://github.com/dzakiabrar21/Q-Ledger",
+    popupDesc: "Q-Ledger digitizes the Outgoing Quality Assurance (OQA) flow of an electronics assembly plant: per-shift machine checklists, MO handover to QA, inspection, defect tickets (NRS) with 5-Why analysis, and a quality ledger. The rules are enforced on the server: a 3-check gatekeeper rejects incomplete handovers, a line with an open defect ticket is locked, pending lots from that line are contained automatically, and an investigation cannot be approved by the person who wrote it. Every status change is written to an append-only audit trail.",
+    images: [
+      "/images/projects/q-ledger-2.webp",
+      "/images/projects/q-ledger-3.webp",
+      "/images/projects/q-ledger-4.webp",
+      "/images/projects/q-ledger-5.webp",
+      "/images/projects/q-ledger-6.webp",
+      "/images/projects/q-ledger-7.webp",
+      "/images/projects/q-ledger-8.webp",
+      "/images/projects/q-ledger-9.webp",
+      "/images/projects/q-ledger-1.webp",
+    ],
+    tagline: "A quality gatekeeper that enforces the rules instead of just recording them",
+    overview: "Q-Ledger is an ASP.NET Core MVC application for the outgoing QA station of an electronics assembly line. Production hands lots over to QA, inspectors record OK/NG verdicts, and defects open NRS tickets that go through 5-Why investigation, corrective action, and supervisor approval. A real-time Andon dashboard shows every line's status on the factory TV, and the ledger can be filtered and exported to Excel for audits.",
+    introduction: "On many production lines, lot handovers, inspection results, and defect tickets still live in paper logbooks or spreadsheets. Lots slip through without a machine checklist, a line with a known problem keeps shipping, and during an audit it is hard to answer who decided what and when. Q-Ledger moves the whole OQA flow into one system and checks the quality rules on the server, so they cannot be skipped from the form.",
+    toolsTechnologies: [
+      { name: "C# & ASP.NET Core 8 MVC", category: "Backend", description: "Cookie authentication and role-based authorization for Production, Inspector, Supervisor, and Admin." },
+      { name: "Entity Framework Core 8 & SQL Server", category: "Data", description: "Code-first models and migrations; the database and demo data are created on startup." },
+      { name: "SignalR", category: "Real-time", description: "Pushes queue and line status to the Andon dashboard without a page refresh." },
+      { name: "ClosedXML", category: "Reporting", description: "Exports the filtered quality ledger to .xlsx." },
+      { name: "Razor, Bootstrap 5 & jQuery", category: "Frontend", description: "Custom design system with IBM Plex, AA-contrast color tokens, SweetAlert2, and Font Awesome." }
+    ],
+    keyFeatures: [
+      { title: "3-Check Gatekeeper", desc: "A handover is rejected if the MO is a duplicate, the line has an open NRS ticket, or the current shift's machine checklist has not passed — checked again on the server at submit." },
+      { title: "Line Lockout & Auto Containment", desc: "An NG verdict holds the lot, opens an NRS ticket, locks the line, and contains every other waiting lot from that line until the ticket is closed." },
+      { title: "5-Why Investigation with Four-Eyes Approval", desc: "Occurrence and outflow 5-Why, temporary and permanent countermeasures, and a disposition (rework, scrap, or special release); the author cannot approve their own investigation." },
+      { title: "Real-time Andon Dashboard", desc: "Status of every area, the next MO in FIFO order, today's lot acceptance, and open tickets, updated live for a TV on the factory floor." },
+      { title: "QA Inspection Station", desc: "Start an inspection at NORMAL, TIGHTENED, or REDUCED level, time it with a stopwatch, and record an OK/NG verdict." },
+      { title: "Append-only Audit Trail", desc: "Every status change records who, when, and from which state to which, with a per-lot history timeline and Excel export." }
+    ],
+    results: [
+      { label: "User Roles", value: "4", desc: "Production, Inspector, Supervisor, Admin" },
+      { label: "Gatekeeper", value: "3 checks", desc: "Verified on the server" },
+      { label: "Dashboard", value: "Real-time", desc: "SignalR Andon screen" },
+      { label: "Audit Trail", value: "Append-only", desc: "Records cannot be edited or deleted" }
+    ]
+  },
+  {
+    slug: "patungin",
+    title: "PatungIn – Split Bill & Finance Tracker",
+    desc: "Mobile-first web app that splits restaurant bills from a receipt photo with Gemini Vision and tracks personal finances from the web or a WhatsApp chat.",
+    tags: ["Node.js", "Express", "SQLite", "Gemini API", "WhatsApp Bot", "PWA"],
+    accuracy: "PWA + WhatsApp Bot",
+    category: "Web Development / AI",
+    accent: "#14b8a6",
+    github: "https://github.com/dzakiabrar21/patungin",
+    popupDesc: "PatungIn has two jobs. Split bill: snap a receipt, let Gemini Vision read the items, tax, and service charge, then split the bill proportionally to what each person ordered and send the breakdown to WhatsApp. Finance tracker: a personal ledger with multiple wallets, quick entry, and analytics, where transactions can be recorded from the web dashboard, a WhatsApp chat (text, voice note, or receipt photo), or an iPhone Shortcut. The finance dashboard follows the design system of Stash, its companion Android app.",
+    images: [
+      "/images/projects/patungin-1.webp",
+      "/images/projects/patungin-2.webp",
+      "/images/projects/patungin-3.webp",
+      "/images/projects/patungin-4.webp",
+      "/images/projects/patungin-5.webp",
+      "/images/projects/patungin-6.webp",
+      "/images/projects/patungin-7.webp",
+    ],
+    tagline: "Snap the receipt, split it fairly, and keep every rupiah on record",
+    overview: "PatungIn is a mobile-first web app (installable as a PWA) built on an Express REST API. The split bill flow reads a receipt with Gemini Vision and walks through four steps — Upload, Review, Split, and Done — with tax and service charge shared proportionally. The finance tracker records income, expenses, and transfers across wallets, and a WhatsApp bot lets the owner log transactions, check balances, or start a group split bill with /hitungin.",
+    introduction: "Splitting a restaurant bill fairly is tedious: someone has to type every item, work out each person's share of tax and service, and chase payments in the group chat. Logging daily spending has the same problem, so people stop doing it. PatungIn turns both into a photo or a chat message, and only calls Gemini when the fast regex parser cannot understand the input.",
+    toolsTechnologies: [
+      { name: "Node.js & Express", category: "Backend", description: "REST API for split bill sessions, wallets, transactions, analytics, import, and export." },
+      { name: "SQLite", category: "Database", description: "Schema and seed data for wallets, categories, and transactions." },
+      { name: "Gemini API", category: "AI", description: "Receipt OCR plus voice and text parsing, with model fallback; regex rules handle simple input first." },
+      { name: "Baileys (WhatsApp)", category: "Bot", description: "Owner DM for logging and recaps, and group chats for collaborative split bill sessions." },
+      { name: "HTML, CSS & JavaScript PWA", category: "Frontend", description: "Mobile-first UI with a service worker cache, Plus Jakarta Sans, and a calculator numpad." },
+      { name: "Google Apps Script", category: "Integration", description: "Google Sheets sync, plus an iPhone Shortcut / Siri endpoint for quick entry." }
+    ],
+    keyFeatures: [
+      { title: "Receipt OCR with Gemini Vision", desc: "Reads the merchant, line items, quantity, unit price, PB1 tax, service charge, and discounts, with several photos per bill." },
+      { title: "Proportional Fair Split", desc: "Tax and service charge are split by what each person ordered, with optional rounding and multiple payers." },
+      { title: "Collaborative Sessions", desc: "Share a link so friends claim their own items, or start a session in a WhatsApp group with /hitungin." },
+      { title: "Finance Tracker", desc: "Balance card with month switcher, AI quick entry (\"makan siang padang 35rb bca\"), wallets, and day-grouped history with search and filters." },
+      { title: "WhatsApp Bot", desc: "Log with text, quick prefixes like +50rb gaji, voice notes, or receipt photos; recap with /saldo, /hariini, and /bulanini." },
+      { title: "Analytics, Import & Export", desc: "Category donut chart, 6-month trend, bank statement import, CSV export, and Google Sheets sync." }
+    ],
+    results: [
+      { label: "Input Channels", value: "3", desc: "Web, WhatsApp, iPhone Shortcut" },
+      { label: "Split Flow", value: "4 steps", desc: "Upload → Review → Split → Done" },
+      { label: "AI Use", value: "On demand", desc: "Regex first, Gemini when needed" },
+      { label: "Platform", value: "PWA", desc: "Installable to the home screen" }
+    ]
+  },
+  {
     slug: "pocketpay-digital-wallet",
     title: "PocketPay – Digital Wallet",
     desc: "Android digital wallet prototype with QRIS payments, round-up savings, interest-bearing pockets, and bank-grade on-device security.",
