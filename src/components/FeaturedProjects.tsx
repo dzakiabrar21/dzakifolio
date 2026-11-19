@@ -1,4 +1,6 @@
 "use client";
+import SectionLabel from "./SectionLabel";
+import ProjectIndex from "./ProjectIndex";
 
 import { useRef } from "react";
 import Link from "next/link";
@@ -35,9 +37,9 @@ export default function FeaturedProjects() {
     <section id="featured-projects" className="w-full py-16 md:py-24 scroll-mt-8 border-t border-white/[0.08]">
       <div className="max-w-[1000px] mx-auto px-4 md:px-6">
         <div className="flex items-end justify-between gap-4 mb-10 md:mb-14">
-          <div className="space-y-2">
-            <p className="font-mono text-[11px] tracking-[0.25em] uppercase text-white/40">Selected work</p>
-            <h2 className="text-white text-[32px] md:text-[48px] font-bold leading-none font-Inter tracking-tight">
+          <div className="space-y-4">
+            <SectionLabel>Selected work</SectionLabel>
+            <h2 className="font-serif font-normal text-white text-[40px] md:text-[64px] leading-none tracking-[-0.01em]">
               Projects
             </h2>
           </div>
@@ -64,6 +66,13 @@ export default function FeaturedProjects() {
             />
           ))}
         </div>
+
+        {projects.length > FEATURED_COUNT && (
+          <div className="mt-24 md:mt-32">
+            <p className="mb-5 font-mono text-[11px] tracking-[0.22em] uppercase text-white/40">More work</p>
+            <ProjectIndex items={projects.slice(FEATURED_COUNT)} startAt={FEATURED_COUNT + 1} />
+          </div>
+        )}
 
         <div className="mt-16 flex justify-center">
           <Link

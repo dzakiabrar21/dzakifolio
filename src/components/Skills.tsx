@@ -1,3 +1,4 @@
+import SectionLabel, { headingClass } from "./SectionLabel";
 import { Code2, Layout, Brain, Database, Wrench, FileCode2, Terminal, Monitor, Sparkles, Server, Cloud } from 'lucide-react';
 import ScrollReveal from './ScrollReveal';
 
@@ -72,8 +73,8 @@ const skillCategories = [
 export default function Skills() {
   return (
     <section id="skills" className="py-10 md:py-14 scroll-mt-8 border-t border-white/[0.08]">
-      {/* Section Title */}
-      <h2 className="text-white text-[26px] md:text-[32px] font-bold leading-tight font-Inter tracking-tight mb-8 md:mb-10">
+      <SectionLabel className="mb-4">Skills</SectionLabel>
+      <h2 className={`${headingClass} mb-8 md:mb-10`}>
         Technical Skills
       </h2>
 

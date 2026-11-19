@@ -1,4 +1,5 @@
 "use client";
+import SectionLabel, { headingClass } from "./SectionLabel";
 
 import { useState } from 'react';
 import { Mail, Github, Linkedin, Instagram, Phone } from 'lucide-react';
@@ -16,12 +17,10 @@ export default function Contact() {
     <section id="contact" className="py-6 md:py-8 mt-4">
       {/* Minimalist Frame Highlight */}
       <ScrollReveal className="relative p-6 md:p-8 rounded-[32px] border border-white/[0.05] bg-white/[0.01] overflow-hidden group">
-        {/* Subtle Gradient Glow */}
-        <div className="absolute -top-24 -right-24 w-64 h-64 bg-emerald-500/5 blur-[100px] rounded-full pointer-events-none" />
-        <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-emerald-500/5 blur-[100px] rounded-full pointer-events-none" />
 
         <div className="flex flex-col gap-4 relative z-10">
-          <h2 className="reveal text-white text-[26px] md:text-[32px] font-bold leading-tight font-Inter tracking-tight">
+          <SectionLabel>Contact</SectionLabel>
+          <h2 className={`reveal ${headingClass}`}>
             Get In Touch
           </h2>
           <p className="reveal text-white/60 text-[14px] md:text-[15px] font-normal leading-relaxed font-Inter max-w-[550px]">

@@ -12,7 +12,7 @@ type CertificateItem = {
   link: string;
 };
 
-const certificates: CertificateItem[] = [
+export const certificates: CertificateItem[] = [
   {
     title: "AI Productivity and AI API Integration for Developers",
     issuer: "Hacktiv8 Indonesia",

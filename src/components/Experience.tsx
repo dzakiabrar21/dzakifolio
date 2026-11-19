@@ -4,6 +4,7 @@ import { useState } from "react";
 import { experiences } from "@/data/experience";
 import { ChevronDown } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
+import SectionLabel, { headingClass } from "./SectionLabel";
 
 // Group experiences by category once outside component render
 const professional = experiences.filter(e => e.category === "professional");
@@ -11,8 +12,8 @@ const leadership = experiences.filter(e => e.category === "leadership");
 const coordination = experiences.filter(e => e.category === "coordination");
 
 const sections = [
-  { title: "Organization & Work Experience", sectionId: "experience", items: [...professional, ...leadership] },
-  { title: "Project Event", sectionId: "project-event", items: coordination },
+  { title: "Organization & Work Experience", label: "Experience", sectionId: "experience", items: [...professional, ...leadership] },
+  { title: "Project Event", label: "Events", sectionId: "project-event", items: coordination },
 ];
 
 export default function Experience() {
@@ -29,9 +30,10 @@ export default function Experience() {
     <section className="w-full py-8 md:py-12">
       <div className="flex flex-col gap-12">
         {sections.map((section) => (
-          <ScrollReveal key={section.title} className="flex flex-col gap-0 scroll-mt-8" threshold={0.1}>
-            {/* Section Title */}
-            <h2 className="reveal text-white text-[26px] md:text-[32px] font-bold leading-tight font-Inter tracking-tight mb-6">
+          <div key={section.title} id={section.sectionId} className="scroll-mt-24">
+          <ScrollReveal className="flex flex-col gap-0" threshold={0.1}>
+            <SectionLabel className="mb-4">{section.label}</SectionLabel>
+            <h2 className={`${headingClass} mb-8`}>
               {section.title}
             </h2>
 
@@ -160,6 +162,7 @@ export default function Experience() {
               })}
             </div>
           </ScrollReveal>
+          </div>
         ))}
       </div>
     </section>

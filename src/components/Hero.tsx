@@ -3,22 +3,18 @@
 import { useState } from 'react';
 import { Github, Linkedin, Instagram, Mail, Monitor, ArrowRight, Check } from 'lucide-react';
 import EmailModal from './EmailModal';
+import SectionLabel, { headingClass } from './SectionLabel';
 
 export default function Hero() {
   const [isEmailModalOpen, setIsEmailModalOpen] = useState(false);
   const email = "muhammaddzakiabrar21@gmail.com";
 
   return (
-    <section id="introduction" className="pb-10">
-      {/* Name — slide in dari kanan, delay sedikit */}
-      <h1 className="text-white text-3xl md:text-[42px] font-bold leading-tight md:leading-[50px] font-Inter tracking-tight mb-3 animate-slide-right delay-100">
-        Muhammad Dzaki Abrar
-      </h1>
-
-      {/* Role — fade up */}
-      <p className="text-white/50 text-base md:text-[18px] font-normal font-Inter mb-5 animate-fade-up delay-200">
-        Informatics Student · AI Enthusiast
-      </p>
+    <section id="introduction" className="pb-10 scroll-mt-24">
+      <SectionLabel className="mb-4">Introduction</SectionLabel>
+      <h2 className={`${headingClass} mb-5`}>
+        Informatics Student <span className="italic text-white/60">&amp;</span> AI Enthusiast
+      </h2>
 
       {/* Social Links Row — fade up */}
       <div className="flex items-center gap-4 flex-wrap mb-8 animate-fade-up delay-300">
